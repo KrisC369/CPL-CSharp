@@ -1,0 +1,17 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DGRepCSharp/Main.cs" ctype="Workbench">
+    <Files>
+      <File FileName="DGRepCSharp/Main.cs" Line="11" Column="25" />
+      <File FileName="DGRepCSharp/core/IReplay.cs" Line="8" Column="9" />
+      <File FileName="DGRepCSharp/core/Replayer.cs" Line="38" Column="32" />
+      <File FileName="DGRepCSharp/DatagramReplayer.cs" Line="22" Column="26" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore">
+    <Watch file="DGRepCSharp/core/Replayer.cs" line="12" offsetX="398" offsetY="187" expression="listenAddress" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
+</Properties>
