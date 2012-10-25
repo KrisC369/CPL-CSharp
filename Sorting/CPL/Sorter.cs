@@ -12,8 +12,8 @@ namespace Sorting
 		public void Sort (IList<T> list)
 		{
 			//InsertionSort (list);
-			MergeSort (list,0,list.Count-1);
-			//Quicksort (0,list.Count-1,list);
+			//MergeSort (list,0,list.Count-1);
+			Quicksort (0,list.Count-1,list);
 		}
 
 		private void InsertionSort(IList<T> list){
