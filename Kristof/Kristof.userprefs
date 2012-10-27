@@ -1,6 +1,15 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="DGRepCSharp.userprefs">
+    <Files>
+      <File FileName="AssemblyInfo.cs" Line="1" Column="1" />
+      <File FileName="DGrepCSharp/Main.cs" Line="1" Column="1" />
+      <File FileName="NamespaceExperiment/NamespaceA/Foo.cs" Line="8" Column="4" />
+      <File FileName="NamespaceExperiment/NamespaceB/Foo.cs" Line="3" Column="16" />
+      <File FileName="NamespaceExperiment/CaseTest.cs" Line="36" Column="1" />
+      <File FileName="DGRepCSharp.userprefs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

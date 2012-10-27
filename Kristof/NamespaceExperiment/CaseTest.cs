@@ -1,6 +1,7 @@
 using System;
 using NamespaceA;
 using NamespaceB;
+using F=NamespaceA;
 //using DGRepCSharp.Replayer; //s a type, not a namespace. 
 							//A using namespace directive can only be applied to namespaces.” 
 
@@ -31,5 +32,15 @@ namespace NamespaceExperiment
 			f = new NamespaceA.Foo();
 		}
 	}
+	
+	// using F=nsA can shorten a lengthy namespace like System.Net.Sockets to S.
+	public class CaseTestSolutionAlternative
+	{
+		private F.Foo f;
+		public CaseTestSolutionAlternative(){
+			f = new F.Foo();
+		}
+	}
+	
 }
 
