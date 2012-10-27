@@ -1,12 +1,12 @@
 using System;
 
-namespace Stack
+namespace Application
 {
 	public class Node
 	{
 		public int? value = null;
 		public Node prev = null;
-
+		
 		public Node (int value)
 		{
 			this.value = value;
