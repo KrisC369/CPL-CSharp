@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>C#</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An overview by socratic questioning.">
+    <meta name="author" content="">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/shCoreDefault.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div id="wrap">
+
+    <div class="container">
+        <div class="page-header">
+            <h1>C#</h1>
+
+            <p class="lead">An overview by socratic questioning.</p>
+        </div>
+
+        <!-- vraag -->
+        <h4>Vraag</h4>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam arcu nunc, tempus quis accumsan vel, euismod
+            vitae metus. Suspendisse rhoncus enim non lorem bibendum in dignissim magna cursus. Donec luctus elit sit
+            amet libero auctor dignissim. Sed consectetur sodales iaculis. Nulla massa augue, pulvinar sagittis luctus
+            eu, lobortis at neque. Maecenas non risus neque. Aenean tristique, dui id vehicula consectetur, lorem ligula
+            hendrerit nisi, id lacinia libero sapien a nisi. Cras ornare dapibus dolor id placerat. Integer varius
+            faucibus dignissim. Cras malesuada scelerisque sem sit amet scelerisque. Phasellus vitae est et metus
+            tincidunt ultrices nec et metus. Nunc eu leo eu lorem gravida tincidunt vitae id ipsum. Morbi sodales nisl
+            sed diam lacinia accumsan. Suspendisse lacinia urna eu urna rhoncus posuere.</p>
+
+        <p>In C# doen we het zo:</p>
+        <pre class="brush: csharp;">
+            public class HelloCSharp{
+                public static void Main(string[] args) {
+                    System.Console.WriteLine("Hello, World!");
+                }
+            }
+        </pre>
+
+        <p>In Java doen we het zo:</p>
+        <pre class="brush: java;">
+            public class HelloJava {
+                public static void main(String[] args){
+                    System.out.println("Hello, World!");
+                }
+            }
+        </pre>
+
+
+    </div>
+    <div id="push"></div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">Tim Ameye, Kristof Coninx, Sander Van Loock and Koen Wellens.</p>
+    </div>
+</div>
+
+<script src="js/shCore.js"></script>
+<script src="js/shBrushCSharp.js"></script>
+<script src="js/shBrushJava.js"></script>
+<script>
+    SyntaxHighlighter.all();
+</script>
+
+</body>
+</html>

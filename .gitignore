@@ -4,3 +4,9 @@ obj
 
 # mstest test results
 TestResults
+
+# projectsettings van WebStorm editor
+.idea/
+
+# Mac files
+.DS_Store
