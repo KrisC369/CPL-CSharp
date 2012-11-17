@@ -11,6 +11,10 @@ p{
     text-align: justify;
 }
 
+#joke{
+    text-align: center;
+}
+
 /* Wrapper for page content to push down footer */
 #wrap {
     min-height: 100%;
