@@ -121,7 +121,7 @@
     language.
 </p>
 
-<h4>For what is C# used?</h4>
+<h4>What is C# used for?</h4>
 
 <p>
     C# is used for a variety of software, ranging from command line utilities to phone applications. The latter
@@ -533,6 +533,97 @@ double d2 = d;
     mechanism for declaring your own implicit methods for automated
     conversion between two non-primitive types while C# does.
 </p>
+
+<h4>What can you tell me about data types in both languages?</h4>
+
+<p>
+    &nbsp;
+</p>
+
+<h4>What is the added value of being able to use more primitive/value types?</h4>
+
+<p>
+    In java there are a few limited primitive types (int, double, float, boolean,...?). These primitive types differ
+    from regular objects in the sense that they are value types and not reference types. Java internally also uses
+    specialized versions of arrays for each of the primitive types and also one for object types. Java also has wrapper
+    classes for reference types of the same structure (Integer, Double, Float, Boolean,..).
+</p>
+
+<p>
+    In C# you can create an infinite number of value types which behave more or less like java primitive types do (by
+    using ‘struct’). C# also offers auto-boxing/unboxing for all of these value types and makes them derive from Object
+    as well, so they can be used interchangeably whenever a reference type is needed (and it will also be boxed when
+    needed). C# also has specialized arrays for the “primitive” types, but can extend the enhanced performance to
+    Nullable &lt;int&gt; types. This widens the applicability of the value types and as such the opportunities to derive
+    performance gains from using them.
+</p>
+
+<h4>What is boxing and unboxing exactly? </h4>
+
+<p>
+    Boxing is the act of wrapping a value type in an Object type that is managed on the heap. Value types are managed on
+    the stack. This allows for more performance during execution, but the tradeoff is that these value types are limited
+    in terms of the operations you can perform on them.
+</p>
+
+<p>
+    Often you need such a value type to behave as a full blown Object. You can box the value type to get an Object. If
+    you just need the value type again, you can unbox it.
+</p>
+
+<h4>Does boxing/unboxing happen automatically?</h4>
+
+<p>
+    In C#, boxing is implicit and unboxing is explicit. This means that boxing happens automatically while unboxing does
+    not. Implicit boxing, in an example:
+</p>
+
+<pre class="brush: csharp;">
+int i = 1;
+object o = i;
+</pre>
+
+<p>
+    and explicit unboxing:
+</p>
+
+<pre class="brush: csharp;">
+o = 1;
+i = (int) o;
+</pre>
+
+<p>
+    In java, however, both boxing and unboxing happen automatically (from version 1.5 onwards). This feature is called
+    autoboxing and unboxing.
+</p>
+
+<pre class="brush: java;">
+int i = 1;
+i = new Integer(5);
+Integer i2 = 3;
+</pre>
+
+<h4>This goes hand in hand with the access modifiers of the languages. Are there differences in these?</h4>
+
+<p>
+    In Java, you have four access modifiers: public (visible for everyone), private (visible from its class), protected
+    (visible from its class and subclasses) and package (visible from the package). In C#, there are five access
+    modifiers available. Three of them are the same as Java: public, private and protected. The other two are internal,
+    where the access is limited to the assembly and protected internal, where the access is limited to the assembly or
+    the types deriving from the class.
+</p>
+
+<h4>You mentioned something like compact getters. What is this feature? </h4>
+
+<p>
+    Compact getters and setters in C# look like the following snippet of code. This concise notation creates a property
+    called <code>Firstname</code> and also generates the getters and setters for that private variable.
+</p>
+
+<pre class="brush: csharp;">
+public string Firstname { get; set; }
+</pre>
+
 
 </div>
 <div id="push"></div>
