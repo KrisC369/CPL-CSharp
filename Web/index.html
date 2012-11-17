@@ -49,6 +49,9 @@
             follows is the discussion, where names in front of a paragraph or question depict who said what.
         </p>
 
+
+        <hr class="bs-docs-separator">
+
         <h4>When and why was C# developed?</h4>
 
         <p>In 1972, a programming language called C was designed by Dennis Ritchie and in 1983 it was augmented by
@@ -118,25 +121,99 @@
             language.
         </p>
 
+        <h4>For what is C# used?</h4>
 
-        <p>In C# doen we het zo:</p>
+        <p>
+            C# is used for a variety of software, ranging from command line utilities to phone applications. The latter
+            is especially the case with the release of Windows Phone in 2010. Windows Phone is a mobile operation system
+            and C# is the most popular programming language to use when building apps for Windows Phone.
+        </p>
+
+        <p>
+            C# is also the center language for Windows developers in general. You can make desktop applications with it.
+            Here, C# distinguishes between two types of applications: Windows Forms and Windows Presentation Foundation
+            (WPF). The latter is newer than the former. Both allow to create controllers like menus and buttons, but the
+            latter gives more power and flexibility.
+        </p>
+
+        <p>
+            C# can also be used for applications in embedded systems, games and website. The latter can be defined in
+            more detail into two categories. The first being the web applications and the second being the web services.
+            Web applications can use the ASP.NET technology to create dynamic webpages. Powerful web services can also
+            be made with C# to exchange data.
+        </p>
+
+        <p>
+            But be aware. C# applications may be intended to be careful with resources such as memory and processing
+            power requirements, but the language was not created in order to compete directly, on performance and size,
+            with C or an assembly language.
+        </p>
+
+        <h4>Has C# changed since its initial release?</h4>
+
+        <p>
+            Like any other programming language, C# also evolved over time since its initial release, referred as C#
+            1.0, in February 2002. The next version, C# 2.0, was released in November 2005 and includes features like
+            generics and nullable types. Two year later, C# 3.0 was released. It mainly added functionality regarding a
+            query language called Language Integrated Query (LINQ) for the .NET framework. Other examples of features in
+            this update were extension and partial methods. In April 2010, C# 4.0 was released and was focused around
+            interoperability. The latest version as of writing, C# 5.0, was released in August 2012 and its main
+            features are asynchronous programming and caller information.
+        </p>
+
+        <h4>Are there syntax differences between Java and C#?</h4>
+
+        <p>
+            What better way to start note some syntactical differences between two programming languages than by writing
+            the famous “Hello, World!” program in each of them. In C# we write:
+        </p>
+
         <pre class="brush: csharp;">
-            public class HelloCSharp{
-                public static void Main(string[] args) {
-                    System.Console.WriteLine("Hello, World!");
+            namespace Hello {
+                public class HelloInCSharp
+                {
+                    public static void Main(string[] args)
+                    {
+                        System.Console.WriteLine ("Hello, World!");
+                    }
                 }
             }
         </pre>
 
-        <p>In Java doen we het zo:</p>
+        <p>And this the Java equivalent: </p>
         <pre class="brush: java;">
-            public class HelloJava {
-                public static void main(String[] args){
-                    System.out.println("Hello, World!");
-                }
+            package hello;
+                public class HelloInJava
+                {
+                    public static void main(String[] args)
+                    {
+                        System.out.println("Hello, World!");
+                    }
             }
         </pre>
 
+        <p>
+            Wait a minute, are there really noticeable differences? Indeed, C# follows the same syntax as Java, but it
+            is a tiny bit different. The class declarations for this example are the same for both C# and Java.
+        </p>
+
+        <p>
+            When we have a closer look at the main method, we see an uppercase m for the main method in C#, but a
+            lowercase m in Java. Indeed, C# uses UpperCamelCase (also called PascalCase) for method names, while Java
+            uses lowerCamelCase.
+        </p>
+
+        <p>
+            The next difference is the writing of the string type. Java uses a capital letter while C# does not.
+            Actually, one can write the string type in C# with a capital letter, because string is just an alias for
+            System.String. Then we have the actual implementation of the main method, where we again see that C# uses
+            the UpperCamelCase notation while Java uses lowerCamelCase.
+        </p>
+
+        <p>
+            Last but not least, we note the difference between a namespace in C# and package in Java. In Java it is just
+            one line of code, while in C# the code within that namespace is surrounded with a block.
+        </p>
 
     </div>
     <div id="push"></div>
