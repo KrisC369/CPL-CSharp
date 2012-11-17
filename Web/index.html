@@ -10,7 +10,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/shCoreDefault.css" rel="stylesheet">
 
     <!--[if lt IE 9]>
@@ -82,8 +81,8 @@
 <p>An important aspect of software development when talking about modularity is the ability to compartmentalize
     your code and to import different libraries.
     C# provides the functionality of referencing namespaces which are basically scopes for arbitrary sections of
-    code. In Java one can import certain classes. The main difference between the using statement from c# and
-    the import statement from Java is the fact that you can’t immediately use a single class in c#. You always
+    code. In Java one can import certain classes. The main difference between the using statement from C# and
+    the import statement from Java is the fact that you can’t immediately use a single class in C#. You always
     have to use the namespace. To compare this with Java, a namespace looks and behaves more like a Java package
     and the using statement would correspond to the import wildcard in Java. Java imports with wildcards is
     generally frowned upon by the Java community though, as this can lead to unnecessary imports and a less
@@ -99,7 +98,7 @@
     the compiler generates the following error: “‘Sorting.Card’ is a type, not a namespace. A using namespace
     directive can only be applied to namespaces.”
     If you want to use the Card class in a C# project, than you would need to import the whole namespace
-    Sorting. In java this would correspond to:
+    Sorting. In Java this would correspond to:
 </p>
 
         <pre class="brush: java;">
@@ -496,7 +495,7 @@ int i = myStruct2;
 
     There are two main ways of effecting such a conversion, namely implicitly or explicitly. Explicit conversion is the
     most basic way of converting an object of type A to an object of type B. This is often done by calling a method on
-    the first object which returns an object of type B. This example shows how explicit conversion is done in java.
+    the first object which returns an object of type B. This example shows how explicit conversion is done in Java.
 </p>
 
 <pre class="brush: java;">
@@ -525,7 +524,7 @@ double d2 = d.doubleValue();
 
 <p>
     Well, that’s not exactly true either. Since Java version 1.5, Java does have some form of implicit conversions. To
-    be more precise, you can use implicit conversions for the existing java primitives. You can assign objects of type
+    be more precise, you can use implicit conversions for the existing Java primitives. You can assign objects of type
     Double to double typed variables as shown in the following example.
 </p>
 
@@ -535,7 +534,7 @@ double d2 = d;
 </pre>
 
 <p>
-    This however only works for java primitives and their associated wrapper-classes. Java does not provide any
+    This however only works for Java primitives and their associated wrapper-classes. Java does not provide any
     mechanism for declaring your own implicit methods for automated
     conversion between two non-primitive types while C# does.
 </p>
@@ -549,14 +548,14 @@ double d2 = d;
 <h4>What is the added value of being able to use more primitive/value types?</h4>
 
 <p>
-    In java there are a few limited primitive types (int, double, float, boolean,...?). These primitive types differ
+    In Java there are a few limited primitive types (int, double, float, boolean,...?). These primitive types differ
     from regular objects in the sense that they are value types and not reference types. Java internally also uses
     specialized versions of arrays for each of the primitive types and also one for object types. Java also has wrapper
     classes for reference types of the same structure (Integer, Double, Float, Boolean,..).
 </p>
 
 <p>
-    In C# you can create an infinite number of value types which behave more or less like java primitive types do (by
+    In C# you can create an infinite number of value types which behave more or less like Java primitive types do (by
     using ‘struct’). C# also offers auto-boxing/unboxing for all of these value types and makes them derive from Object
     as well, so they can be used interchangeably whenever a reference type is needed (and it will also be boxed when
     needed). C# also has specialized arrays for the “primitive” types, but can extend the enhanced performance to
@@ -599,7 +598,7 @@ i = (int) o;
 </pre>
 
 <p>
-    In java, however, both boxing and unboxing happen automatically (from version 1.5 onwards). This feature is called
+    In Java, however, both boxing and unboxing happen automatically (from version 1.5 onwards). This feature is called
     autoboxing and unboxing.
 </p>
 
@@ -681,7 +680,7 @@ public string Firstname {
 
 <p>
     C# supports two types of parameter passing: pass-by-reference and pass-by-value. Java is a bit more straightforward
-    and only supports pass-by-value. It can be a bit difficult to understand, however, that java actually passes
+    and only supports pass-by-value. It can be a bit difficult to understand, however, that Java actually passes
     references. So the references are passed by value. This means that references to objects are passed and the values
     of the objects can be manipulated but the reference to the object can not be altered! At least not outside the
     method. Inside the method you can change the references, but because those references were copied from the original
@@ -974,16 +973,16 @@ public Class myClass {
 </p>
 
 <h4>I’ve learned a lot about functional programming lately and I think its quite useful in the right circumstances. So
-    i’ve been wondering, is functional programming possible in java or C#?</h4>
+    i’ve been wondering, is functional programming possible in Java or C#?</h4>
 
 <p>
-    First of all, let’s talk about java. Java in itself has no capabilities for functional programming in the language
+    First of all, let’s talk about Java. Java in itself has no capabilities for functional programming in the language
     itself. Lambda expressions, closures, first-class functions and all the other fancy functional programming
-    mechanisms are absent from basic java versions. Java is, however, planning on introducing lambda expressions in a
-    next version of java.
-    The best way to try and do some functional programming in java is to use one of the third-party functional
-    programming libraries to do the heavy lifting. But you will never be able to get rid of the verbosity of java
-    itself, so if you really want clean functional code, java might not be the best option.
+    mechanisms are absent from basic Java versions. Java is, however, planning on introducing lambda expressions in a
+    next version of Java.
+    The best way to try and do some functional programming in Java is to use one of the third-party functional
+    programming libraries to do the heavy lifting. But you will never be able to get rid of the verbosity of Java
+    itself, so if you really want clean functional code, Java might not be the best option.
 </p>
 
 <p>
@@ -1344,12 +1343,12 @@ class TaskTest
 <p>
     As previously stated, the main difference between generics in Java and in C# is the fact that C# retains type
     specific information all throughout the compilation process and that the compiled code still has type information
-    available. In java generics, the concept of type erasure is used. This means that type information is erased during
+    available. In Java generics, the concept of type erasure is used. This means that type information is erased during
     compilation. All generically typed objects are cast to the Object type at compile time thusly removing the generic
     type information. This means that once the code is compiled, the generic type information is gone and cannot be used
     at runtime to perform type specific operations. Java reflection at runtime can only access the Object type’s members
     or you need to cast the object back to the original type at runtime which isn’t type safe. The only way this can
-    happen securely is because the java type checker validates whether the generic code is correctly typed before
+    happen securely is because the Java type checker validates whether the generic code is correctly typed before
     compilation.
 </p>
 
@@ -1364,10 +1363,10 @@ class TaskTest
     One of the main reasons behind this design choice is the argument of backward compatibility. Because the generic
     type
     information is removed at compile time an ArrayList&lt;Person&gt; just becomes a ArrayList of Objects. This way the
-    generated code remains compatible with earlier versions of java which didn’t have any form of generics yet (for
+    generated code remains compatible with earlier versions of Java which didn’t have any form of generics yet (for
     example
     the non-generic ArrayList instances). It may be useful to note that from a language perspective, there aren’t any
-    problems with java-generics. It is not particularly different than generics in C#, but the way they are handled by
+    problems with Java-generics. It is not particularly different than generics in C#, but the way they are handled by
     there
     respective “virtual machines” is different.
 </p>
@@ -1375,7 +1374,7 @@ class TaskTest
 <h4>So you are saying that C# is not backward compatible in terms of generics?</h4>
 
 <p>
-    Not completely, no. They did introduce generics a little bit earlier in their timeline than java did, but if you go
+    Not completely, no. They did introduce generics a little bit earlier in their timeline than Java did, but if you go
     back to C# before version 2.0 you will notice that you have to convert your List&lt;Something&gt; back to simple
     List objects to work with them.
 </p>
@@ -1398,7 +1397,7 @@ class TaskTest
     as a metric for how well a certain programming language allows working with other programming languages.
 </p>
 
-<h4>Does C# have a better interoperability score than java?</h4>
+<h4>Does C# have a better interoperability score than Java?</h4>
 
 <p>
     Well, it is hard to compare the two languages based on this measure because nowadays there are a lot of different
@@ -1408,7 +1407,7 @@ class TaskTest
 </p>
 
 <p>
-    Java and scala can be used interchangeably when programming in either language, while C# has the advantage of being
+    Java and Scala can be used interchangeably when programming in either language, while C# has the advantage of being
     able to use C++ components.
 </p>
 
@@ -1416,13 +1415,13 @@ class TaskTest
     I would say though, that C# does score higher on the interoperability mark when you consider the possibilities for
     calling and invoking windows specific constructs, like COM objects or general Win32 API calls. C# was primarily
     meant for Windows Platforms, so it is understandable that it supports native windows construct a bit better than
-    java (which was designed with a platform independent philosophy) does. The Mono platform, created to bring C# to
+    Java (which was designed with a platform independent philosophy) does. The Mono platform, created to bring C# to
     other platforms was never able to provide the same interoperability as C# originally had.
 </p>
 
 <p>
     Interoperability is also a measure between two entities. For example, you can gauge the interoperability between
-    java and another language. It is not really a metric you can measure on its own.
+    Java and another language. It is not really a metric you can measure on its own.
 </p>
 
 <h4>Ok, so how is the interoperability between Java and C# then? Can they be used interchangeably?</h4>
