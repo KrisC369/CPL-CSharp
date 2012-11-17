@@ -624,6 +624,410 @@ Integer i2 = 3;
 public string Firstname { get; set; }
 </pre>
 
+<h4>Is there a way to do this in Java?</h4>
+
+<p>
+    In Java, it is not possible to create such a compact notation because Java does not include properties. There are
+    efforts from IDEs (such as Eclipse and Netbeans) to make it easier for programmers by introducing templates or
+    generating getters and setters for the programmers. However, in the Java language itself, one has to fully write the
+    getter and setter for a variable.
+</p>
+
+<h4>These getters and setters encapsulate properties, right? Is there also something like fields? And so, what is the
+    difference?</h4>
+
+<p>
+    Properties in C# are a mechanism that allow a programmer to keep the fields private. In some class, the following
+    lines of code could come from any class. Note that this is the longer version of the compact notation for getters
+    and setters.
+</p>
+
+<pre class="brush: csharp;">
+private string _myField;
+
+public string Firstname {
+    get { return _myField; }
+    set { _myField = value; }
+}
+</pre>
+
+<p>
+    Properties have come from the object-oriented principles, which state that the internal workings of a class should
+    be hidden from the outside world. Fields, however, should always be kept away from the outside world. Properties
+    allow programmers to change the way data on an object is accessed without breaking it’s public interface. A major
+    difference between the two is that interfaces cannot have fields, but can contain properties.
+</p>
+
+<h4>
+    So Java only contains fields. Hmm, are there really no properties in Java?
+</h4>
+
+<p>
+    In Java, the bean properties dictate the “standard pattern” for accessing fields. Methods starting with get, taking
+    no arguments and returning a value, are getters. Setters on the other hand, start with set, take a value as an
+    argument and return nothing. However, properties themselves are not provided in Java. They are proposed in the Java
+    7 release.
+</p>
+
+<h4>
+    Going over to the methods and their parameters. How does parameter passing look like in C# and Java?
+</h4>
+
+<p>
+    C# supports two types of parameter passing: pass-by-reference and pass-by-value. Java is a bit more straightforward
+    and only supports pass-by-value. It can be a bit difficult to understand, however, that java actually passes
+    references. So the references are passed by value. This means that references to objects are passed and the values
+    of the objects can be manipulated but the reference to the object can not be altered! At least not outside the
+    method. Inside the method you can change the references, but because those references were copied from the original
+    and then passed, altering these references will not have any influence on the original references that were passed.
+    In this manner Java works exactly like C. You can assign a pointer, pass the pointer to a method, follow the pointer
+    in the method and change the data that was pointed to. However, you cannot change where that pointer points.
+</p>
+
+<p>
+    C# goes a bit further. When declaring the <code>ref</code> keyword in front of a reference type parameter you pass
+    to a method, the reference itself is copied from the caller to the method parameter. This allows us to change the
+    object which is referenced but you can not update the caller variable’s value. There are two restrictions when using
+    the <code>ref</code> keyword. First, the caller is required to supply a variable, not a value, as an argument. In so
+    doing, the caller explicitly recognizes that the target method could reassign the values of the variables associated
+    with any <code>ref</code> parameters it receives. Furthermore, it is necessary to initialize any local variables
+    passed as <code>ref</code> because target methods could read data from <code>ref</code> parameters without first
+    assigning them.
+</p>
+
+<p>
+    The developers from C# included the possibility to add some flexibility regarding these restrictions. When you only
+    want to write to your <code>ref</code> parameter, you have to pass the <code>out</code> keyword in front of the
+    parameter. Then, it does not need to be initialized. The developer of a method may declare one or more
+    <code>out</code> parameters in order to get around the restriction that a method may only have one return type.
+</p>
+
+<h4>Is there a way to vary the size of the parameter list dynamically?</h4>
+
+<p>
+    Yes, this is possible both with C# and Java. They both handle this in a rather similar fashion. C# provides the
+    params keyword that enables the number of arguments to vary in the calling code. The variable after the
+    <code>params</code> keyword has to be an array and can be handled just like an ordinary array. Instead of this
+    keyword, one has to write (...) in front of the dynamically varying parameter list when using Java. Just like C#,
+    the Java compiler creates and initializes an array of same-typed values and pass the array’s reference to the target
+    method.
+</p>
+
+<h4>Can’t you just declare optional parameters in C#? </h4>
+
+<p>
+    C# allows parameters in a method call to be named. This means that a programmer can write the following code, and it
+    all works fine.
+</p>
+
+<pre class="brush: csharp;">
+static void Main(string[] args)
+{
+    // Output: 5
+    Console.WriteLine(CalculateSpeed(100,20));
+
+    // Output: 5
+    Console.WriteLine(CalculateSpeed(distance: 100,time: 20));
+    // Output: 5
+    Console.WriteLine(CalculateSpeed(time: 20, distance: 100));
+}
+
+static int CalculateSpeed(int distance, int time)
+{
+    return (distance / time);
+}
+</pre>
+
+<p>
+    So, with these named parameters allow the programmer to switch the parameters if that would be necessary. Not so
+    impressive, one would say. But allowing named parameters introduces the power of optional parameters. Because, once
+    a parameter is named, the parameter can be set to optional by the programmer, allowing shorter methods. The
+    following code should give a concrete example of how optional parameters work in C#. The example also shows that
+    when there are more optional parameters, one can be left out without the program crashing.
+</p>
+
+<pre class="brush: csharp;">
+static void Main(string[] args)
+{
+    // Output: 5
+    Console.WriteLine(CalculateSpeed(100,20,true,true));
+
+    // Output: 5
+    Console.WriteLine(CalculateSpeed(distance: 100,time: 20, seconds: true));
+    // Output: 5
+    Console.WriteLine(CalculateSpeed(time: 20, distance: 100));
+}
+
+// boolean ‘seconds’ indicates the time is in seconds.
+// If it is false, the time is used as if it is expressed in hours.
+// The meters boolean works in the same way.
+static int CalculateSpeed(int distance, int time, [boolean meters = true], [boolean seconds = true])
+{
+    if(! seconds) time = time * 3600;
+    if(! meters) distance = distance * 1000;
+    return distance / time
+}
+</pre>
+
+<h4>Is there a way to accomplish this functionality in Java?</h4>
+
+<p>
+    In Java, overloading allows to create a feeling of optional parameters. One could create fields with the default
+    values of the parameters. Then, two methods can be created: one with the optional value and one without it. The
+    method without the optional value should only call the real method, passing through the default field as the
+    parameter.
+</p>
+
+<h4>Are all methods considered equal in C# and Java, or are there some special methods?</h4>
+
+<p>
+    In comparison to Java, C# supports extension methods and generator methods. The former are methods that are added to
+    existing types. The advantage of these methods is that no new derived type needs to be created and that the existing
+    type does not need recompiling or modifications. Extension methods are created by putting the keyword this before
+    the only parameter, which indicates that the method is an extension for the type of the parameter. An example is
+    given by the following lines of code.
+</p>
+
+<pre class="brush: csharp;">
+public static boolean IsNumeric(this string str)
+{
+    float output;
+    return float.TryParse(str, out output);
+}
+
+static void Main(string[] args)
+{
+    string s = “42”;
+
+    // Output: We did it!
+    if(s.IsNumeric()) {
+        Console.WriteLine(“We did it!”);
+    } else {
+        Console.WriteLine(“Ohno, what a failure!”);
+    }
+}
+</pre>
+
+<h4>Then, what are generator methods exactly?</h4>
+
+<p>
+    A generator method is a routine that can control the iteration behavior of a loop. A generator method actually
+    behaves as a complete iterator. In C#, this behavior is established with the <code>yield</code> keyword. This
+    keyword should be read as “remember what I just returned, and iterate from this step onwards for the next result”.
+    An example is shown in the code below. In this code, the enumerator will first return happy. When called again, sad
+    will be returned, and so on.
+
+</p>
+
+<pre class="brush: csharp;">
+public class Emotion : IEnumerable&lt;string&gt;
+{
+    public IEnumerator&lt;string&gt; GetEnumerator()
+    {
+        yield return “happy”;
+        yield return “sad”;
+        yield return “confused”;
+        yield return “angry”;
+    }
+}
+</pre>
+
+<h4>Does C# make use of header files to define the different methods like C or C++? And what about Java?</h4>
+
+<p>
+    C# never separates the implementation from the declaration so there is no header file like in C or implementation
+    file like in C++. Declaration and implementation always appear together in the same file. This removes the
+    redundancy to separate declaration and implementation, although there is an exception. C# does support a feature
+    called “partial methods” in which the method’s defining declaration is separate from its implementation. Java
+    follows this same method and avoid this separation.
+</p>
+
+<h4>What are these partial methods?</h4>
+
+<p>
+    This is something which was added in C# 3.0 and is an extension of the partial classes concept. A partial class is
+    just a way to split the implementation over multiple files. Primarily this is useful for tools that are generating
+    or modifying code. In this manner, the program can run one part of the class while a developer modifies another
+    part. Partial class that belong together have to share a common name and need to declare the <code>partial</code>
+    keyword in the class definition.
+
+</p>
+
+<p>
+    Partial methods extend this though by allowing a declaration of a method without an implementation. Partial methods
+    are only allowed within partial classes! The practical use of partial methods is the same as before. Implementation
+    becomes optional as it can be added after compilation in a sister partial class, likely in a separate file.
+</p>
+
+<h4>Do you always have to write the fully qualified name when you use a method and structure your file system
+    accordingly?</h4>
+
+<p>
+    Java actually enforces some conventions for structuring your packages. As such, you actually need to place each
+    package in a folder with the same name, following the same structure in your directories as you do in your packages.
+</p>
+
+<p>
+    C# uses namespaces, but it does not have any notion of this and although many programmers adopt the previously
+    discussed style of organising namespaces, the programmer is free to place the namespaces anywhere they want.
+    In some situations, it can also make it harder to understand from which physical location you are actually importing
+    a namespace.
+</p>
+
+<h4>But surely, you can use the Visual Studio IDE to provide such information?</h4>
+
+<p>
+    Yes, the Visual Studio IDE can indeed be used in a lot of ways to assist you in developing and to provide you with
+    the information that you need at that time. This does create a greater dependency on a certain IDE in order to
+    program in a certain language. An IDE can be a huge benefit, but the lack of an IDE shouldn’t be too much of an
+    uncomfortable hindrance either. There are still programmers which prefer less full blown graphical editors, such as
+    vim or emacs. In short, IDE-dependency is never a good thing, even if the IDE is a splendid one.
+</p>
+
+<h4>I see, but can the namespace mechanism actually lead to problems?</h4>
+
+<p>
+    Well, yes. When you are importing whole namespaces, it can be troublesome in some situations to actually discern
+    which member class you are actually using if a certain class is present in both namespaces. Imagine the case where
+    two namespaces exist, <code>namespaceA</code> and <code>namespaceB</code>. Then we have a class <code>ClassC</code>
+    present in both <code>namespaceA</code> and <code>namespaceB</code>.
+    The following code would lead to an compilation error:
+</p>
+
+<pre class="brush: csharp;">
+using namespaceA;
+using namespaceB;
+</pre>
+
+<p>
+    If you need a <code>ClassA</code> from <code>namespaceA</code> and a <code>ClassB</code> from
+    <code>namespaceB</code>, this could be problematic. In Java you can just import the specific class you want.
+</p>
+
+<h4>Is there no way around this?</h4>
+
+<p>
+    Well actually, there is. You can use <code>ClassA</code> from <code>namespaceA</code> directly without the using
+    statement, if you write it in full each time you use it.
+</p>
+
+<pre class="brush: csharp;">
+namespaceA.ClassA a : new namespaceA.ClassA();
+</pre>
+
+<p>
+    But nevertheless this is less compact nor ideal if it is a heavily used class.
+</p>
+
+<h4>You said delegates are an advantage in C#. What is this and is there a Java alternative?</h4>
+
+<p>
+    Delegates in C# is a mechanism that allows a programmer to use different functions, albeit with the same return type
+    and parameter list, in a concise way. First, a delegator function is created which states the return type and
+    parameter list. The delegator function, indicated as a parameter, can be used in a normal function. When calling the
+    normal function, any function that suffices to the return type and parameter list of the delegator function can be
+    supplied.
+</p>
+
+<p>
+    In Java, real delegates aren’t provided. However, one can create a delegate mechanism with the following snippet of
+    code. However, as one can see, this causes difficulties in reading the code (as the names cannot really indicate
+    well what the delegated functions do). This does not improve the clarity of the meaning of the code.
+</p>
+
+<pre class="brush: java;">
+public Interface Delegate {
+    public void doSomething(Object... args)
+}
+
+public Class myClass {
+    public void myMethod(Delegate delegate) {
+        // ...
+        delegate.doSomething(args);
+        // ...
+    }
+
+    public static void main(String[] args) {
+        // ...
+        myClassObject.myMethod(new Delegate() {
+            public void doSomething(Object... args) {
+                // do something in this method.
+            }
+        });
+        // ...
+    }
+}
+</pre>
+
+<h4>Are there any other mechanisms that provide compactness?</h4>
+
+<p>
+    Yes, C# provides another mechanism! It has yet a far more compact syntax for creating a delegate, introduced in C#
+    2.0: anonymous methods. C# 3.0 expands this feature with lambda expressions. Lambda expressions are divided into two
+    types: statement lambdas and expressions lambdas.
+</p>
+
+<h4>I’ve learned a lot about functional programming lately and I think its quite useful in the right circumstances. So
+    i’ve been wondering, is functional programming possible in java or C#?</h4>
+
+<p>
+    First of all, let’s talk about java. Java in itself has no capabilities for functional programming in the language
+    itself. Lambda expressions, closures, first-class functions and all the other fancy functional programming
+    mechanisms are absent from basic java versions. Java is, however, planning on introducing lambda expressions in a
+    next version of java.
+    The best way to try and do some functional programming in java is to use one of the third-party functional
+    programming libraries to do the heavy lifting. But you will never be able to get rid of the verbosity of java
+    itself, so if you really want clean functional code, java might not be the best option.
+</p>
+
+<p>
+    C#, on the other hand has already provided some forms of functional programming like lambda expressions. C# also
+    provides strongly typed delegates which can be used to almost the same extent as first-class functions can. However,
+    even when C# can technically be used to do functional programming, it will never be as easy to use in this matter as
+    a pure functional language and doing a lot of functional programming in C# will also quickly become a hassle.
+</p>
+
+<h4>Interesting! Can you elaborate a bit more on this?</h4>
+
+<p>
+    Statement lambdas consist of a formal parameter list, followed by the lambda operator ‘=>’ and a code block. Some
+    syntactic sugar is missing here. These statements do not have a name, which explains the former ‘anonymous methods’
+    terminology. Second, the return type is not formally specified. When using the lambda expression, the compiler is
+    able to deduct the return type at runtime. Also, the access modifier is omitted, but as the method is no longer an
+    accessible member of the containing class there is no need to describe its accessibility. Similarly a static
+    modifier would no longer be necessary. At last, it is also possible to omit parameter types if the compiler is able
+    to infer the types. This does not always improves the code as it makes the readability harder. As a guideline,
+    consider omitting the types when they are obvious to the reader.
+</p>
+
+<p>
+    Expression lambdas can make this expressions even less verbose. Expressions with only a single return statement can
+    be rewritten without explicitly declaring the return keyword. This could avoid extra brackets.
+</p>
+
+<h4>So, what can you do with all these lambdas?</h4>
+
+<p>
+    Lambdas are a special type of closures and are used to specify local function-valued arguments in calls to other
+    methods, like delegates. They can also be used as expression trees.
+</p>
+
+<h4>What are expression trees and how are they related to lambda expressions?</h4>
+
+<p>
+    Just like a delegate is an object that enables you to pass around a method, is an expression tree an object that
+    enables you to pass around the compiler’s analysis of an expression lambda. So, lambda expressions can be converted
+    to expression trees and become objects that represent data that describes the lambda expression, not compiled code.
+    This way, we can analyze the lambda at execution time!
+</p>
+
+<h4>Can you give a practical application of this?</h4>
+
+<p>
+    Expression trees make it possible to analyze the lambda at execution time and use that information to construct, for
+    example, a query that you can execute on a database. Consider the following example: you want to find all employees
+    with a salary above € 2000 in a remote database. This can be done with the following lambda expression.
+</p>
 
 </div>
 <div id="push"></div>
