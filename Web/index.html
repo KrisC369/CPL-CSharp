@@ -22,201 +22,520 @@
 
 <div id="wrap">
 
-    <div class="container">
-        <div class="page-header">
-            <h1>C# versus Java</h1>
+<div class="container">
+<div class="page-header">
+    <h1>C# versus Java</h1>
 
-            <p class="lead">A discussion by socratic questioning.</p>
-        </div>
+    <p class="lead">A discussion by socratic questioning.</p>
+</div>
 
-        <p>For the class Gigantic Software Project Development, an assignment for groups of 3 was given to the students.
-            The assignment consisted of creating a program for simulating amusements parks, while keeping in mind all of
-            the safety regulations and pricing details. The implementation could be done in any programming language of
-            choice. However, another part of the assignment was to fully explain why that particular programming
-            language was chosen. Moe, Larry and Curley formed a team and started a discussion on which programming
-            language they would be using. Bearing in mind that they should have to document exactly why they chose the
-            programming language, the discussion got rather long.
+<p>For the class Gigantic Software Project Development, an assignment for groups of 3 was given to the students.
+    The assignment consisted of creating a program for simulating amusements parks, while keeping in mind all of
+    the safety regulations and pricing details. The implementation could be done in any programming language of
+    choice. However, another part of the assignment was to fully explain why that particular programming
+    language was chosen. Moe, Larry and Curley formed a team and started a discussion on which programming
+    language they would be using. Bearing in mind that they should have to document exactly why they chose the
+    programming language, the discussion got rather long.
 
-        </p>
+</p>
 
-        <p id="joke"><img src="img/joke.jpg" class="img-polaroid"></p>
+<p id="joke"><img src="img/joke.jpg" class="img-polaroid"></p>
 
-        <p>Moe would like to use <strong>C#</strong> as he is quite an
-            expert in it. Larry on the other hand, thinks they should stick to <strong>Java</strong> as it is the
-            programming
-            language they know well by practicing it in other courses during the last 4 years. Curley does not really
-            care what programming language is used, as long as the program can be written down easily in it. What
-            follows is the discussion, where names in front of a paragraph or question depict who said what.
-        </p>
+<p>Moe would like to use <strong>C#</strong> as he is quite an
+    expert in it. Larry on the other hand, thinks they should stick to <strong>Java</strong> as it is the
+    programming
+    language they know well by practicing it in other courses during the last 4 years. Curley does not really
+    care what programming language is used, as long as the program can be written down easily in it. What
+    follows is the discussion, where names in front of a paragraph or question depict who said what.
+</p>
 
 
-        <hr class="bs-docs-separator">
+<hr class="bs-docs-separator">
 
-        <h4>When and why was C# developed?</h4>
+<h4>When and why was C# developed?</h4>
 
-        <p>In 1972, a programming language called C was designed by Dennis Ritchie and in 1983 it was augmented by
-            Bjarne Stroustrup with type checking and classes. This language was named C with Classes and it became
-            known, along with some other new features, as C++ in 1984. The Sun Microsystems people in 1990 did not like
-            C or C++, so they excluded some of the features like multiple inheritance, pointers, structs, enum types,
-            operator overloading and a goto statement. Therefore making it a smaller, a simpler and especially a more
-            reliable programming language called Java. Then, in July 2000, Microsoft announced the programming language
-            C# because they disagreed with Sun Microsystems about the removal of all those features available in C++,
-            except for multiple inheritance. Therefore, C# is very close to C++. It borrows mosts of its statements,
-            keywords and operators directly from C++.
-        </p>
+<p>In 1972, a programming language called C was designed by Dennis Ritchie and in 1983 it was augmented by
+    Bjarne Stroustrup with type checking and classes. This language was named C with Classes and it became
+    known, along with some other new features, as C++ in 1984. The Sun Microsystems people in 1990 did not like
+    C or C++, so they excluded some of the features like multiple inheritance, pointers, structs, enum types,
+    operator overloading and a goto statement. Therefore making it a smaller, a simpler and especially a more
+    reliable programming language called Java. Then, in July 2000, Microsoft announced the programming language
+    C# because they disagreed with Sun Microsystems about the removal of all those features available in C++,
+    except for multiple inheritance. Therefore, C# is very close to C++. It borrows mosts of its statements,
+    keywords and operators directly from C++.
+</p>
 
-        <p>One can thus see C# as an advance over both C++ and Java, because it offers an alternative to the difficult
-            C++ programming language but also an alternative for Java programmers who are missing features of C and C++.
-            Another reason for the development of C# was to provide a language for component-based software
-            development.
-        </p>
+<p>One can thus see C# as an advance over both C++ and Java, because it offers an alternative to the difficult
+    C++ programming language but also an alternative for Java programmers who are missing features of C and C++.
+    Another reason for the development of C# was to provide a language for component-based software
+    development.
+</p>
 
-        <h4>So, does C# support modularity better than Java?</h4>
+<h4>So, does C# support modularity better than Java?</h4>
 
-        <p>An important aspect of software development when talking about modularity is the ability to compartmentalize
-            your code and to import different libraries.
-            C# provides the functionality of referencing namespaces which are basically scopes for arbitrary sections of
-            code. In Java one can import certain classes. The main difference between the using statement from c# and
-            the import statement from Java is the fact that you can’t immediately use a single class in c#. You always
-            have to use the namespace. To compare this with Java, a namespace looks and behaves more like a Java package
-            and the using statement would correspond to the import wildcard in Java. Java imports with wildcards is
-            generally frowned upon by the Java community though, as this can lead to unnecessary imports and a less
-            clean dependency scheme. If you try to use the using directive on a specific class (say Card) like
-            this:
-        </p>
+<p>An important aspect of software development when talking about modularity is the ability to compartmentalize
+    your code and to import different libraries.
+    C# provides the functionality of referencing namespaces which are basically scopes for arbitrary sections of
+    code. In Java one can import certain classes. The main difference between the using statement from c# and
+    the import statement from Java is the fact that you can’t immediately use a single class in c#. You always
+    have to use the namespace. To compare this with Java, a namespace looks and behaves more like a Java package
+    and the using statement would correspond to the import wildcard in Java. Java imports with wildcards is
+    generally frowned upon by the Java community though, as this can lead to unnecessary imports and a less
+    clean dependency scheme. If you try to use the using directive on a specific class (say Card) like
+    this:
+</p>
 
         <pre class="brush: csharp;">
             using Sorting.Card;
         </pre>
 
-        <p>
-            the compiler generates the following error: “‘Sorting.Card’ is a type, not a namespace. A using namespace
-            directive can only be applied to namespaces.”
-            If you want to use the Card class in a C# project, than you would need to import the whole namespace
-            Sorting. In java this would correspond to:
-        </p>
+<p>
+    the compiler generates the following error: “‘Sorting.Card’ is a type, not a namespace. A using namespace
+    directive can only be applied to namespaces.”
+    If you want to use the Card class in a C# project, than you would need to import the whole namespace
+    Sorting. In java this would correspond to:
+</p>
 
         <pre class="brush: java;">
             import Sorting.*;
         </pre>
 
-        <p>while in Java you can alternatively do</p>
+<p>while in Java you can alternatively do</p>
 
         <pre class="brush: java;">
             import Sorting.Card;
         </pre>
 
-        <h4>All those preceding languages must have made influences on the C# programming language, haven’t they?</h4>
+<h4>All those preceding languages must have made influences on the C# programming language, haven’t they?</h4>
 
-        <p>
-            Indeed they did. To give you a concrete example, look at the difference in syntax when implementing an
-            interface. In Java you use the implements keyword in your class declaration, because Java was influenced by
-            Smalltalk. C# however uses the colon : which is close to the C++ syntax.
-        </p>
+<p>
+    Indeed they did. To give you a concrete example, look at the difference in syntax when implementing an
+    interface. In Java you use the implements keyword in your class declaration, because Java was influenced by
+    Smalltalk. C# however uses the colon : which is close to the C++ syntax.
+</p>
 
-        <p>
-            Not only are there direct influences from Java and C++, but also from programming languages like Delphi and
-            Visual Basic. The former is because the lead designer of C# is Anders Hejlsberg, a Danish software engineer,
-            and he is also known for the programming language Delphi. The latter is because Visual Basic is also a .NET
-            language.
-        </p>
+<p>
+    Not only are there direct influences from Java and C++, but also from programming languages like Delphi and
+    Visual Basic. The former is because the lead designer of C# is Anders Hejlsberg, a Danish software engineer,
+    and he is also known for the programming language Delphi. The latter is because Visual Basic is also a .NET
+    language.
+</p>
 
-        <h4>For what is C# used?</h4>
+<h4>For what is C# used?</h4>
 
-        <p>
-            C# is used for a variety of software, ranging from command line utilities to phone applications. The latter
-            is especially the case with the release of Windows Phone in 2010. Windows Phone is a mobile operation system
-            and C# is the most popular programming language to use when building apps for Windows Phone.
-        </p>
+<p>
+    C# is used for a variety of software, ranging from command line utilities to phone applications. The latter
+    is especially the case with the release of Windows Phone in 2010. Windows Phone is a mobile operation system
+    and C# is the most popular programming language to use when building apps for Windows Phone.
+</p>
 
-        <p>
-            C# is also the center language for Windows developers in general. You can make desktop applications with it.
-            Here, C# distinguishes between two types of applications: Windows Forms and Windows Presentation Foundation
-            (WPF). The latter is newer than the former. Both allow to create controllers like menus and buttons, but the
-            latter gives more power and flexibility.
-        </p>
+<p>
+    C# is also the center language for Windows developers in general. You can make desktop applications with it.
+    Here, C# distinguishes between two types of applications: Windows Forms and Windows Presentation Foundation
+    (WPF). The latter is newer than the former. Both allow to create controllers like menus and buttons, but the
+    latter gives more power and flexibility.
+</p>
 
-        <p>
-            C# can also be used for applications in embedded systems, games and website. The latter can be defined in
-            more detail into two categories. The first being the web applications and the second being the web services.
-            Web applications can use the ASP.NET technology to create dynamic webpages. Powerful web services can also
-            be made with C# to exchange data.
-        </p>
+<p>
+    C# can also be used for applications in embedded systems, games and website. The latter can be defined in
+    more detail into two categories. The first being the web applications and the second being the web services.
+    Web applications can use the ASP.NET technology to create dynamic webpages. Powerful web services can also
+    be made with C# to exchange data.
+</p>
 
-        <p>
-            But be aware. C# applications may be intended to be careful with resources such as memory and processing
-            power requirements, but the language was not created in order to compete directly, on performance and size,
-            with C or an assembly language.
-        </p>
+<p>
+    But be aware. C# applications may be intended to be careful with resources such as memory and processing
+    power requirements, but the language was not created in order to compete directly, on performance and size,
+    with C or an assembly language.
+</p>
 
-        <h4>Has C# changed since its initial release?</h4>
+<h4>Has C# changed since its initial release?</h4>
 
-        <p>
-            Like any other programming language, C# also evolved over time since its initial release, referred as C#
-            1.0, in February 2002. The next version, C# 2.0, was released in November 2005 and includes features like
-            generics and nullable types. Two year later, C# 3.0 was released. It mainly added functionality regarding a
-            query language called Language Integrated Query (LINQ) for the .NET framework. Other examples of features in
-            this update were extension and partial methods. In April 2010, C# 4.0 was released and was focused around
-            interoperability. The latest version as of writing, C# 5.0, was released in August 2012 and its main
-            features are asynchronous programming and caller information.
-        </p>
+<p>
+    Like any other programming language, C# also evolved over time since its initial release, referred as C#
+    1.0, in February 2002. The next version, C# 2.0, was released in November 2005 and includes features like
+    generics and nullable types. Two year later, C# 3.0 was released. It mainly added functionality regarding a
+    query language called Language Integrated Query (LINQ) for the .NET framework. Other examples of features in
+    this update were extension and partial methods. In April 2010, C# 4.0 was released and was focused around
+    interoperability. The latest version as of writing, C# 5.0, was released in August 2012 and its main
+    features are asynchronous programming and caller information.
+</p>
 
-        <h4>Are there syntax differences between Java and C#?</h4>
+<h4>Are there syntax differences between Java and C#?</h4>
 
-        <p>
-            What better way to start note some syntactical differences between two programming languages than by writing
-            the famous “Hello, World!” program in each of them. In C# we write:
-        </p>
+<p>
+    What better way to start note some syntactical differences between two programming languages than by writing
+    the famous “Hello, World!” program in each of them. In C# we write:
+</p>
 
-        <pre class="brush: csharp;">
-            namespace Hello {
-                public class HelloInCSharp
-                {
-                    public static void Main(string[] args)
-                    {
-                        System.Console.WriteLine ("Hello, World!");
-                    }
-                }
+<pre class="brush: csharp;">
+    namespace Hello {
+        public class HelloInCSharp
+        {
+            public static void Main(string[] args)
+            {
+                System.Console.WriteLine ("Hello, World!");
             }
-        </pre>
+        }
+    }
+</pre>
 
-        <p>And this the Java equivalent: </p>
-        <pre class="brush: java;">
-            package hello;
-                public class HelloInJava
-                {
-                    public static void main(String[] args)
-                    {
-                        System.out.println("Hello, World!");
-                    }
-            }
-        </pre>
+<p>And this the Java equivalent: </p>
 
-        <p>
-            Wait a minute, are there really noticeable differences? Indeed, C# follows the same syntax as Java, but it
-            is a tiny bit different. The class declarations for this example are the same for both C# and Java.
-        </p>
+<pre class="brush: java;">
+    package hello;
+    public class HelloInJava
+    {
+        public static void main(String[] args)
+        {
+            System.out.println("Hello, World!");
+        }
+    }
+</pre>
 
-        <p>
-            When we have a closer look at the main method, we see an uppercase m for the main method in C#, but a
-            lowercase m in Java. Indeed, C# uses UpperCamelCase (also called PascalCase) for method names, while Java
-            uses lowerCamelCase.
-        </p>
+<p>
+    Wait a minute, are there really noticeable differences? Indeed, C# follows the same syntax as Java, but it
+    is a tiny bit different. The class declarations for this example are the same for both C# and Java.
+</p>
 
-        <p>
-            The next difference is the writing of the string type. Java uses a capital letter while C# does not.
-            Actually, one can write the string type in C# with a capital letter, because string is just an alias for
-            System.String. Then we have the actual implementation of the main method, where we again see that C# uses
-            the UpperCamelCase notation while Java uses lowerCamelCase.
-        </p>
+<p>
+    When we have a closer look at the main method, we see an uppercase m for the main method in C#, but a
+    lowercase m in Java. Indeed, C# uses UpperCamelCase (also called PascalCase) for method names, while Java
+    uses lowerCamelCase.
+</p>
 
-        <p>
-            Last but not least, we note the difference between a namespace in C# and package in Java. In Java it is just
-            one line of code, while in C# the code within that namespace is surrounded with a block.
-        </p>
+<p>
+    The next difference is the writing of the string type. Java uses a capital letter while C# does not.
+    Actually, one can write the string type in C# with a capital letter, because string is just an alias for
+    System.String. Then we have the actual implementation of the main method, where we again see that C# uses
+    the UpperCamelCase notation while Java uses lowerCamelCase.
+</p>
 
-    </div>
-    <div id="push"></div>
+<p>
+    Last but not least, we note the difference between a namespace in C# and package in Java. In Java it is just
+    one line of code, while in C# the code within that namespace is surrounded with a block.
+</p>
+
+<h4>What does Java have that C# does not? What are the limitations?</h4>
+
+<p>
+    A big advantage of Java over C# is that Java is open source. There are a lot of IDEs to write Java code in, and
+    lots of them are free as well (e.g. Eclipse). For C#, developers are mostly bound to Microsoft’s Visual Studio,
+    which costs more than 600 euros (for the professional version).
+</p>
+
+<p>
+    Apart from that, the Java virtual machine (JVM) is installed on most of the hardware these days. The JVM is not
+    bound to one operating system. Instead, it can be used on Microsoft’s Windows, Mac OS X, and Linux. This also
+    contributes to why the group of Java developers is greater than the group of C# developers. When developing programs
+    in Java, companies can target larger groups of people than if the program would be developed in C#.
+</p>
+
+<h4>If I recall correctly, there was something called the Mono project. Does this not solve the issues of C# not being
+    able to run on a machine that has no Microsoft’s Visual Studio?</h4>
+
+<p>
+    Indeed, there is an open-source, cross-platform project called the Mono project. Miguel de Icanza from Ximian
+    believed that .NET had the potential to increase programmer productivity and began investigating if a linux version
+    was feasible. However, the Mono team was not big enough to create a full product. Therefore, the project was made
+    open-source and thus free.
+</p>
+
+<h4>Does Mono has limitations in comparison to Microsoft’s Visual Studio?</h4>
+
+<p>
+    The last release of Mono was Mono 3.0. This release included features from C# 5.0. There are only a few features of
+    C# that are not included in Mono. What is missing most are System.Management, which can not be mapped to linux, and
+    the async pipeline. The latter needs a parallel processing pipeline with async support. This is not (yet?)
+    implemented in Mono.
+
+</p>
+
+<h4>Okay, apart from the business perspective, are there any other Java features and C# limitations?</h4>
+
+<p>
+    Another feature of Java is that enumerations are actually full classes. They can implement interfaces, have private
+    constructors, have multiple fields of various types, etc. In C#, enumerations are mostly just named integers. They
+    cannot implement interfaces. Also, enums in C# cannot be extended and are not typesafe.
+</p>
+
+<p>
+    Instance initializers, as depicted in the code below, are a handy Java feature that allows a programmer to
+    initialize some fields outside a constructor or a method. The only way to accomplish this behavior in C# is by
+    creating a private constructor without parameters, which initializes the instances. This is not a good option since
+    this cancels out the use of constructors without parameters and if there are a lot of constructors for the class,
+    all of them have to call the private constructor. In C#, instances are mostly initialized in a constructor or at the
+    variable’s declaration point.
+</p>
+
+<pre class="brush: java;">
+    private int myInt;
+    private double myDouble;
+    private char theLetterC;
+
+    {
+        myInt = 0;
+        myDouble = 3.1415926535;
+        theLetterC = ‘c’;
+    }
+</pre>
+
+<p>
+    Also handy for a programmer, are unchecked exceptions. This is a feature that again, is not in C#. Unchecked
+    exceptions allow the programmer to forget about catching exceptions in a method. Instead, the programmer can declare
+    an unchecked exception in the signature of the method, alerting all methods that call the method that might throw an
+    unchecked exception. The other methods have the possibility to surround the method call with a
+    try-catch-construction, or also declare an unchecked exception in their signature. In C#, one has to explicitly
+    write try-catch statements and check whether exceptions are thrown manually.
+</p>
+
+<p>
+    Sometimes it might be necessary for a static member to be imported. In C#, this is not possible, though some people
+    state it can be done by forging static members from a raw intermediate language. In Java, static imports are allowed
+    and used quite often. An example of static members that can be imported quite easily this way, is the Math class in
+    Java.
+</p>
+
+<p>
+    Also, Java offers some nice features that are not in C#. One of these are soft and phantom references, which make
+    the life of the garbage collector a bit easier.
+</p>
+
+<h4>Stop right there! What are soft and phantom references?</h4>
+
+<p>
+    Soft references in Java can be used to implement memory-sensitive caches. An object which is weakly reachable will
+    be discarded at the next garbage collection cycle. Soft references can be left as is, and will be discarded when
+    memory is needed instead of just at the end of the garbage collection cycle.
+</p>
+
+<p>
+    Phantom references can be used to perform pre-garbage collection. Objects are phantomly referenced after they are
+    finalized. Phantom references get collected in the references queue as other references do, but the phantom
+    references can still be used to clean up after finalizations. Phantom references were introduced to replace the
+    finalize-construct, which heavily slows down the execution.
+</p>
+
+<h4>So why shouldn’t we use Java? What are the advantages of C#?</h4>
+
+<p>
+    In some ways, C# code is more compact than Java code. For instance, implementing an interface is done by adding a
+    colon between the class and the interface to implement. When implementing an interface or extending a class in Java,
+    you use the keyword <code>extends</code> and <code>implements</code>, but in C# you just use a colon. Thus in Java
+    one writes <code>Cat extends Animal</code>, but in C# one writes <code>Cat : Animal</code>. C# also allows compact
+    getters and setters, whereas Java requires a programmer to fully type the getter and setter methods. Another
+    difference is when you write a switch statement in C#, a break is mandatory for each case.
+</p>
+
+<p>
+    When it comes to conversions, C# has more to show than Java. A programmer is able to use implicit as well as
+    explicit conversions in C#. In Java, only explicit conversions are possible. Sometimes, just returning an object
+    might not be enough. For this purpose, C# allows a programmer to output parameters to methods. This isn’t possible
+    in Java. C# does not require all arguments of a method or function to be used, meaning some can be optional. There
+    is no such thing as optional parameters in Java. C# allows more kinds of methods than Java. For instance, there are
+    generator methods in C#.
+</p>
+
+<p>
+    Delegates are also an example of how C# can be more compact than Java. A programmer is allowed to write more public
+    classes in one file when using C#. In Java, this is not the case, as the class name must be equal to the file name,
+    making it impossible to get two public classes in one file. For this purpose, C# uses different access modifiers
+    than Java. Another issue with Java is that one mostly needs to write full method names, whereas in C# the programmer
+    is able to overload operators. This can be very handy.
+</p>
+
+<h4>
+    Woow, that are a lot of differences. I am curious about all of those. Let me go more into detail. What is operator
+    overloading exactly and why should you use it?
+</h4>
+
+<p>
+    The best way to illustrate what operator overloading is and what the benefit is, is by starting with some C# code.
+    We have a <code>Matrix</code> class that represents a matrix. We can for example add matrices in mathematics. To
+    implement this, we add methods to the <code>Matrix</code> class. Using these methods result in the code below.
+</p>
+
+<pre class="brush: csharp;">
+Matrix m1,m2;
+Matrix result = m1.Add(m2);
+</pre>
+
+<p>
+    This is ok, but wouldn’t it be more clear if you could write the following line of code instead?
+</p>
+
+<pre class="brush: csharp;">
+Matrix result = m1 + m2;
+</pre>
+
+<p>
+    Off course the latter code is preferred as it is more readable and natural. Lets go a bit further. Which one of the
+    following lines of code below do you prefer?
+</p>
+
+<pre class="brush: csharp;">
+Matrix result1 = m1.Add(m2.Add(m3.Add(m4);
+Matrix result2 = m1 + m2 + m3 + m4;
+</pre>
+
+<p>
+    Here again, the latter is preferred because it is easier to work with. We can now start with the real job that is
+    operator overloading. Have a closer look at the following example code:
+</p>
+
+<pre class="brush: csharp;">
+Matrix result3 = m1 + m2;
+Matrix result4 = m1 + 5;
+</pre>
+
+<p>
+    The latter expression could be defined as “add 5 to each element of the matrix”. So here we are overloading the +
+    operator with different argument types. We can conclude that operator overloading let us give a new meaning to
+    operators.
+</p>
+
+<h4>So how does it work in C#? </h4>
+
+<p>
+    Indeed, I only showed how you can use it, but not how you implement it. I will continue the previous example. It is
+    very straightforward. Just like writing your own methods, you write multiple methods with the same operator, but
+    with different argument types and you also use the <code>operator</code> keyword followed by the operator. The
+    following lines of code will illustrate this.
+</p>
+
+<pre class="brush: csharp;">
+class Matrix
+{
+	// ...
+
+	public static Matrix operator +(Matrix m1, Matrix m2)
+	{
+		// implementation
+		// add m1 and m2
+	}
+
+    public static Matrix operator +(Matrix m1, int n)
+	{
+		// implementation
+	// add n to each element in m1
+	}
+}
+</pre>
+
+<p>Like I said, it’s just that simple.</p>
+
+<h4>How does it work in Java?</h4>
+
+<p>
+    The answer to this question is very short: it can’t be done. The only thing that comes close to operator overloading
+    in Java is the operator <code>+</code>. You can use it to add up two numbers, but you also use it for string
+    concatenation like show in the following example code:
+</p>
+
+<pre class="brush: java;">
+int x = 5 + 5; // adding up two numbers
+String result = "x = " + x; // string concatenation
+</pre>
+
+<h4>Why isn’t it included in Java?</h4>
+
+<p>
+    There are two reasons why the Java people did not include operator overloading. The first and also the main raison
+    is the compiler complexity. The second reason was just a personal choice made by James Gosling, the creator of Java
+    who believed that adding operator overloading would not comply with the clean mindness of Java.
+</p>
+
+<h4>I’ve heard that you can use operator overloading to convert to and from other types, is that correct?</h4>
+
+<p>
+    You are correct and it is also very natural like the following example code. Instead of writing the first line of
+    code, one can write the second line that does the same thing.
+</p>
+
+<pre class="brush: csharp;">
+MyStruct myStruct1 = new MyStruct(5);
+MyStruct myStruct2 = 5;
+</pre>
+
+<p>
+    The inverse of this mechanism is the following code, which is also very straightforward to write and understand:
+</p>
+
+<pre class="brush: csharp;">
+int i = myStruct2;
+</pre>
+
+<p>
+    As you probably guessed, <code>i</code> will be equal to 5. To implement this, it is the same as in the previous
+    question.
+</p>
+
+<h4>I do not understand, where does this operator overloading happen?</h4>
+
+<p>
+    Well, here the operator overloading is on the <code>=</code> operator. You can see that on the same object type,
+    this operator is used on the first line to just assign a value to the variable. On the second line however, it is
+    used as a special constructor, like I indicated with colors.
+</p>
+
+<h4>I remember you talking about implicit and explicit conversions. What are they actually?</h4>
+
+<p>
+    Conversions, whether they are implicit or explicit, are ways of converting an object to an object of a different
+    type. Sometimes it happens that a certain function or method expects an object of a certain type, but you only have
+    an object of another (albeit similar) type available.
+</p>
+
+<p>
+
+    There are two main ways of effecting such a conversion, namely implicitly or explicitly. Explicit conversion is the
+    most basic way of converting an object of type A to an object of type B. This is often done by calling a method on
+    the first object which returns an object of type B. This example shows how explicit conversion is done in java.
+</p>
+
+<pre class="brush: java;">
+Double d = new Double(2.0);
+double d2 = d.doubleValue();
+</pre>
+
+<p>
+    Implicit conversions are a bit more subtle than explicit conversions in the way that they occur whenever they need
+    to without the programmer actually having to explicitly state the conversion.
+</p>
+
+<p>
+    The conversion method should just be available in the code somewhere and whenever an object of type A is provided
+    where type B is needed, this method is automatically used to perform the conversion, often without the programmer
+    noticing. This is a very handy mechanism for keeping the amount of code to write to a minimum when converting
+    between types.
+</p>
+
+<p>
+    But in short, explicit conversion is explicitly telling the program to do a conversion and implicit conversion is
+    having the program do it automatically.
+</p>
+
+<h4>So Java doesn’t have any form of this implicit conversion?</h4>
+
+<p>
+    Well, that’s not exactly true either. Since Java version 1.5, Java does have some form of implicit conversions. To
+    be more precise, you can use implicit conversions for the existing java primitives. You can assign objects of type
+    Double to double typed variables as shown in the following example.
+</p>
+
+<pre class="brush: java;">
+Double d = 2.0;
+double d2 = d;
+</pre>
+
+<p>
+    This however only works for java primitives and their associated wrapper-classes. Java does not provide any
+    mechanism for declaring your own implicit methods for automated
+    conversion between two non-primitive types while C# does.
+</p>
+
+</div>
+<div id="push"></div>
 </div>
 
 <div id="footer">
