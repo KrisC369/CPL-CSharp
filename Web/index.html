@@ -168,29 +168,30 @@
     the famous “Hello, World!” program in each of them. In C# we write:
 </p>
 
-        <pre class="brush: csharp;">
-            namespace Hello {
-                public class HelloInCSharp
-                {
-                    public static void Main(string[] args)
-                    {
-                        System.Console.WriteLine ("Hello, World!");
-                    }
-                }
+<pre class="brush: csharp;">
+    namespace Hello {
+        public class HelloInCSharp
+        {
+            public static void Main(string[] args)
+            {
+                System.Console.WriteLine ("Hello, World!");
             }
-        </pre>
+        }
+    }
+</pre>
 
 <p>And this the Java equivalent: </p>
-        <pre class="brush: java;">
-            package hello;
-            public class HelloInJava
-            {
-                public static void main(String[] args)
-                {
-                    System.out.println("Hello, World!");
-                }
-            }
-        </pre>
+
+<pre class="brush: java;">
+    package hello;
+    public class HelloInJava
+    {
+        public static void main(String[] args)
+        {
+            System.out.println("Hello, World!");
+        }
+    }
+</pre>
 
 <p>
     Wait a minute, are there really noticeable differences? Indeed, C# follows the same syntax as Java, but it
@@ -341,6 +342,196 @@
     making it impossible to get two public classes in one file. For this purpose, C# uses different access modifiers
     than Java. Another issue with Java is that one mostly needs to write full method names, whereas in C# the programmer
     is able to overload operators. This can be very handy.
+</p>
+
+<h4>
+    Woow, that are a lot of differences. I am curious about all of those. Let me go more into detail. What is operator
+    overloading exactly and why should you use it?
+</h4>
+
+<p>
+    The best way to illustrate what operator overloading is and what the benefit is, is by starting with some C# code.
+    We have a <code>Matrix</code> class that represents a matrix. We can for example add matrices in mathematics. To
+    implement this, we add methods to the <code>Matrix</code> class. Using these methods result in the code below.
+</p>
+
+<pre class="brush: csharp;">
+Matrix m1,m2;
+Matrix result = m1.Add(m2);
+</pre>
+
+<p>
+    This is ok, but wouldn’t it be more clear if you could write the following line of code instead?
+</p>
+
+<pre class="brush: csharp;">
+Matrix result = m1 + m2;
+</pre>
+
+<p>
+    Off course the latter code is preferred as it is more readable and natural. Lets go a bit further. Which one of the
+    following lines of code below do you prefer?
+</p>
+
+<pre class="brush: csharp;">
+Matrix result1 = m1.Add(m2.Add(m3.Add(m4);
+Matrix result2 = m1 + m2 + m3 + m4;
+</pre>
+
+<p>
+    Here again, the latter is preferred because it is easier to work with. We can now start with the real job that is
+    operator overloading. Have a closer look at the following example code:
+</p>
+
+<pre class="brush: csharp;">
+Matrix result3 = m1 + m2;
+Matrix result4 = m1 + 5;
+</pre>
+
+<p>
+    The latter expression could be defined as “add 5 to each element of the matrix”. So here we are overloading the +
+    operator with different argument types. We can conclude that operator overloading let us give a new meaning to
+    operators.
+</p>
+
+<h4>So how does it work in C#? </h4>
+
+<p>
+    Indeed, I only showed how you can use it, but not how you implement it. I will continue the previous example. It is
+    very straightforward. Just like writing your own methods, you write multiple methods with the same operator, but
+    with different argument types and you also use the <code>operator</code> keyword followed by the operator. The
+    following lines of code will illustrate this.
+</p>
+
+<pre class="brush: csharp;">
+class Matrix
+{
+	// ...
+
+	public static Matrix operator +(Matrix m1, Matrix m2)
+	{
+		// implementation
+		// add m1 and m2
+	}
+
+    public static Matrix operator +(Matrix m1, int n)
+	{
+		// implementation
+	// add n to each element in m1
+	}
+}
+</pre>
+
+<p>Like I said, it’s just that simple.</p>
+
+<h4>How does it work in Java?</h4>
+
+<p>
+    The answer to this question is very short: it can’t be done. The only thing that comes close to operator overloading
+    in Java is the operator <code>+</code>. You can use it to add up two numbers, but you also use it for string
+    concatenation like show in the following example code:
+</p>
+
+<pre class="brush: java;">
+int x = 5 + 5; // adding up two numbers
+String result = "x = " + x; // string concatenation
+</pre>
+
+<h4>Why isn’t it included in Java?</h4>
+
+<p>
+    There are two reasons why the Java people did not include operator overloading. The first and also the main raison
+    is the compiler complexity. The second reason was just a personal choice made by James Gosling, the creator of Java
+    who believed that adding operator overloading would not comply with the clean mindness of Java.
+</p>
+
+<h4>I’ve heard that you can use operator overloading to convert to and from other types, is that correct?</h4>
+
+<p>
+    You are correct and it is also very natural like the following example code. Instead of writing the first line of
+    code, one can write the second line that does the same thing.
+</p>
+
+<pre class="brush: csharp;">
+MyStruct myStruct1 = new MyStruct(5);
+MyStruct myStruct2 = 5;
+</pre>
+
+<p>
+    The inverse of this mechanism is the following code, which is also very straightforward to write and understand:
+</p>
+
+<pre class="brush: csharp;">
+int i = myStruct2;
+</pre>
+
+<p>
+    As you probably guessed, <code>i</code> will be equal to 5. To implement this, it is the same as in the previous
+    question.
+</p>
+
+<h4>I do not understand, where does this operator overloading happen?</h4>
+
+<p>
+    Well, here the operator overloading is on the <code>=</code> operator. You can see that on the same object type,
+    this operator is used on the first line to just assign a value to the variable. On the second line however, it is
+    used as a special constructor, like I indicated with colors.
+</p>
+
+<h4>I remember you talking about implicit and explicit conversions. What are they actually?</h4>
+
+<p>
+    Conversions, whether they are implicit or explicit, are ways of converting an object to an object of a different
+    type. Sometimes it happens that a certain function or method expects an object of a certain type, but you only have
+    an object of another (albeit similar) type available.
+</p>
+
+<p>
+
+    There are two main ways of effecting such a conversion, namely implicitly or explicitly. Explicit conversion is the
+    most basic way of converting an object of type A to an object of type B. This is often done by calling a method on
+    the first object which returns an object of type B. This example shows how explicit conversion is done in java.
+</p>
+
+<pre class="brush: java;">
+Double d = new Double(2.0);
+double d2 = d.doubleValue();
+</pre>
+
+<p>
+    Implicit conversions are a bit more subtle than explicit conversions in the way that they occur whenever they need
+    to without the programmer actually having to explicitly state the conversion.
+</p>
+
+<p>
+    The conversion method should just be available in the code somewhere and whenever an object of type A is provided
+    where type B is needed, this method is automatically used to perform the conversion, often without the programmer
+    noticing. This is a very handy mechanism for keeping the amount of code to write to a minimum when converting
+    between types.
+</p>
+
+<p>
+    But in short, explicit conversion is explicitly telling the program to do a conversion and implicit conversion is
+    having the program do it automatically.
+</p>
+
+<h4>So Java doesn’t have any form of this implicit conversion?</h4>
+
+<p>
+    Well, that’s not exactly true either. Since Java version 1.5, Java does have some form of implicit conversions. To
+    be more precise, you can use implicit conversions for the existing java primitives. You can assign objects of type
+    Double to double typed variables as shown in the following example.
+</p>
+
+<pre class="brush: java;">
+Double d = 2.0;
+double d2 = d;
+</pre>
+
+<p>
+    This however only works for java primitives and their associated wrapper-classes. Java does not provide any
+    mechanism for declaring your own implicit methods for automated
+    conversion between two non-primitive types while C# does.
 </p>
 
 </div>
