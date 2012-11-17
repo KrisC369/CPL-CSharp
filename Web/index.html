@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>C#</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="An overview by socratic questioning.">
-    <meta name="author" content="">
+    <meta name="author" content="Tim Ameye, Kristof Coninx, Sander Van Loock and Koen Wellens">
 
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -40,7 +40,7 @@
 </p>
 
 <div id="joke">
-    <p><img src="img/joke.jpg" class="img-polaroid"></p>
+    <p><img src="img/joke.jpg" class="img-polaroid" alt="Why do Java developers wear glasses?"></p>
 
     <p>
         <small>An example of socratic questioning.</small>
@@ -1239,7 +1239,7 @@ catch (System.OverflowException e)
 <pre class="brush: java;">
 class ThreadTest extends Thread {
 	public void run() {
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i &lt; 1000; i++) {
 			System.out.print("y");
 		}
 	}
@@ -1247,7 +1247,7 @@ class ThreadTest extends Thread {
 	public static void main(String[] args) {
 		ThreadTest t = new ThreadTest();
 		t.start();
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i &lt; 1000; i++) {
 			System.out.print("x");
 		}
 	}
@@ -1263,7 +1263,7 @@ using System.Threading;
 
 class ThreadTest{
 	public static void WriteY (){
-		for (int i = 0; i < 1000; i++){
+		for (int i = 0; i &lt; 1000; i++){
 			Console.Write ("y");
 		}
 	}
@@ -1271,7 +1271,7 @@ class ThreadTest{
 	public static void Main (){
 		Thread t = new Thread (WriteY);
 		t.Start ();
-		for (int i = 0; i < 1000; i++){
+		for (int i = 0; i &lt; 1000; i++){
 			Console.Write ("x");
 		}
 	}
