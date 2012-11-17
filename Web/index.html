@@ -41,7 +41,10 @@
 
 <div id="joke">
     <p><img src="img/joke.jpg" class="img-polaroid"></p>
-    <p><small>An example of socratic questioning.</small></p>
+
+    <p>
+        <small>An example of socratic questioning.</small>
+    </p>
 </div>
 
 <p>Moe would like to use <strong>C#</strong> as he is quite an
@@ -1031,6 +1034,467 @@ public Class myClass {
     example, a query that you can execute on a database. Consider the following example: you want to find all employees
     with a salary above € 2000 in a remote database. This can be done with the following lambda expression.
 </p>
+
+<pre class="brush: csharp;">
+employees.Where(
+      employee => employee.Salary >= 2000);}
+}
+</pre>
+
+<p>
+    One technique to do this is to send all employee records to the client and create employee objects. Next you create
+    a delegate from the lambda and execute the delegate on every <code>Employee</code>. You can imagine that when you
+    have a large database with millions of employees, this approach can be very expensive. So this is where expression
+    trees come in. The lambda expression is converted to a data object that describes the expression. In this case, it
+    can be converted to an SQL query and run at the database. The database can run this query and just send the
+    requested employees.
+</p>
+
+<h4>But how can the compiler decide to convert a statement lambda to a delegate or to an expression tree?</h4>
+
+<p>
+    Good question! A lambda that is converted to a delegate causes the compiler to emit the lambda as a method, and
+    generates code which creates a delegate to that method at execution time. A lambda that is converted to an
+    expression tree causes the compiler to generate code which creates an instance of <code>LambdaExpression</code>
+    object at execution time.
+</p>
+
+<p>
+    The example above that searched employees with a salary more than € 2000 is a LINQ query and is represented with an
+    extension method. The methods which extend the IEnumerable&lt;T&gt; interface take delegate parameters; the methods
+    which extend the IQueryable&lt;T&gt; interface take expression tree parameters. The compiler can therefore use the
+    type of the collection that is being queried to determine whether to create delegates or expression trees from
+    lambdas supplied as arguments.
+</p>
+
+<h4>Can you give more detail about LINQ?</h4>
+
+<p>
+    LINQ stands for Language Integrated Query and can easily be compared with SQL. However, SQL is a domain-specific
+    query language and lacks the full power of a complete programming language like C#. The advantage of SQL is that it
+    is much easier to read and understand compared with writing your query expressions with methods. That is why the
+    language designers added the query expression syntax to C# 3.0.
+    As an example, look at the following LINQ query:
+</p>
+
+<pre class="brush: csharp;">
+IEnumerable&lt;string&gt; selection =
+    from word in Keywords
+    where !word.Contains('*')
+    select word;
+</pre>
+
+<p>
+    People who know the basics of SQL will definitely be familiar with this example. When evaluating the query, you
+    begin by identifying the collection (described by the from clause), then filter out the unwanted items (with the
+    where clause) and finally describe the desired result (with the select clause). As a remark, the reordering of
+    statements compared with SQL is due to a more logic execution rather than a gain performance. This ordering is more
+    related with the actual execution and IDEs are able to deduct the type of the selected variable, something that can
+    help the developer.
+</p>
+
+<p>
+    The features of LINQ are projecting, filtering, sorting and grouping. Projecting can map the traversed data onto
+    other objects or anonymous types. Filtering can be done by defining a boolean statement in the where clause. A
+    sorting strategy can be defined in the <code>order by</code> statement. Finally, the grouping statement provides a
+    way of dividing your data in a self-defined manner.
+</p>
+
+<h4>How does the LINQ mechanism works under the hood? </h4>
+
+<p>
+    The C# compiler simply translates query expressions into a series of method calls. For example, the outcome of the
+    LINQ example given above would be
+</p>
+
+<pre class="brush: csharp;">
+IEnumerable&lt;string&gt; selection = Keywords.Where(word => word.Contains('*'));
+</pre>
+
+<p>
+    The lambda expression is then itself translated by the compiler to emit a method with the body of the lambda, as I
+    explained before.
+</p>
+
+<h4>If LINQ is not in Java, what can Java oppose to LINQ?</h4>
+
+<p>
+    Java has nothing as a LINQ equivalent! Some say LINQ is possibly one of the most distinguishing features between
+    Java and C#.
+</p>
+
+<h4>You made me curious now! I was wondering if there are some keywords in C# that aren’t in Java? Or the other way
+    around?</h4>
+
+<p>
+    C# indeed has more keywords than Java. C# has a total of 77 predefined keywords, while Java only uses 60 predefined
+    keywords. So there are at least 17 keywords in C# that aren’t in Java. Some have already been discussed, like yield
+    and namespace. Some are quite simple: C# has predefined keywords foreach and in, while the behavior of these
+    keywords combined, can be created in Java with the normal for keyword. The following lines of code should show how
+    that is done. In C# one writes
+</p>
+
+<pre class="brush: csharp;">
+foreach(House house in housesForSale) {
+    // ...
+}
+</pre>
+
+<p>but in Java </p>
+
+<pre class="brush: java;">
+for(House house : housesForSale) {
+    // ...
+}
+</pre>
+
+<p>
+    A lot of the C# keywords are dedicated to the data types and access modifiers. C# allows programmers to perform
+    arithmetic run-time checks with the checked keyword. This construct in C#, which can be seen in the following lines
+    of code, checks whether for instance arithmetic overflow happens.
+</p>
+
+<pre class="brush: csharp;">
+try
+{
+    z =  checked((short)(x + y));
+}
+catch (System.OverflowException e)
+{
+    System.Console.WriteLine(e.ToString());
+}
+</pre>
+
+<p>
+    Since C# allows implicit and explicit conversions, keywords to help the programmer with these conversions are
+    provided.
+</p>
+
+<p>
+    As already said, Java has less keywords than C# but two of them are quite extraordinary. Java predefines the <code>goto</code>
+    and <code>const</code> keywords, even though they have never been used in the language.
+</p>
+
+<h4>C# does look like a nice programming language to program in, but does it have features that we can exploit for this
+    assignment?</h4>
+
+<p>
+    Well, C# offers a feature called dynamic programming. Maybe that is something we could use.
+</p>
+
+<h4>What is dynamic programming and how do I use it in C#?</h4>
+
+<p>
+    If you have an object of some class, you can only use those methods that are defined in that class. That is because
+    you statically typed that variable to be that kind of type. The compiler also checks this at compile time. But what
+    if you have some object that you don’t know its type at compile time, but only at runtime? It is here where dynamic
+    programming comes in. At compile time, it lets the compiler skip verifying and binding and these will instead be
+    resolved at execution time.
+</p>
+
+<p>
+    Dynamic programming was added in C# 4.0 and is very straightforward to use. Instead of declaring type of a variable,
+    you just declare it as <code>dynamic</code>. Then you just call methods as you would with a statically typed
+    variable. You can even call an undefined method as long as the syntax is valid, because the compiler will not check
+    this.
+</p>
+
+<h4>What about dynamic programming in Java? Is this possible?</h4>
+
+<p>
+    Unfortunately, Java does not offer a <code>dynamic</code> type like C#. You can use reflection, but this is not
+    entirely the same.
+</p>
+
+<h4>Can you tell me something about the type systems of those two languages?</h4>
+
+<p>
+    Well, the main difference between the type system in C# and Java, is that in C# every primitive type inherits from
+    one single root <code>object</code> type. We say that C# has a unified type system. This is not the case for Java,
+    because several primitive types are not objects like an <code>int</code>.
+</p>
+
+<h4>Does C# allow multithreading? I think that we could use multithreading for our assignment. </h4>
+
+<p>
+    Indeed, in these times of multicore processors, multithreading cannot be neglected. As it is neither the case for
+    Java, nor is it for C#. Using threads in one process enables you to perform concurrent processing and share
+    resources of the application. Hower one has to be careful with the latter, because sharing resources among threads
+    can also introduce race conditions.
+</p>
+
+<p>
+    Lets first start with Java. There are two ways of creating a thread. You can implement the Runnable interface and
+    then you have to implement the <code>public void run()</code> method. You can also extend the <code>Thread</code>
+    class and then you have to overwrite the <code>public void run()</code> method. Afterwards one can call the <code>start()</code>
+    method on the thread.
+</p>
+
+<p>
+    In C#, you can create a thread by instantiating a <code>Thread</code> object with a method as parameter. Afterward
+    you call the <code>Start()</code> method on that thread. So there isn’t really a big difference between the way you
+    implement a basic thread in Java or C# like you can see in the example below. In Java:
+</p>
+
+<pre class="brush: java;">
+class ThreadTest extends Thread {
+	public void run() {
+		for (int i = 0; i < 1000; i++) {
+			System.out.print("y");
+		}
+	}
+
+	public static void main(String[] args) {
+		ThreadTest t = new ThreadTest();
+		t.start();
+		for (int i = 0; i < 1000; i++) {
+			System.out.print("x");
+		}
+	}
+
+}
+</pre>
+
+<p>and in C#</p>
+
+<pre class="brush: csharp;">
+using System;
+using System.Threading;
+
+class ThreadTest{
+	public static void WriteY (){
+		for (int i = 0; i < 1000; i++){
+			Console.Write ("y");
+		}
+	}
+
+	public static void Main (){
+		Thread t = new Thread (WriteY);
+		t.Start ();
+		for (int i = 0; i < 1000; i++){
+			Console.Write ("x");
+		}
+	}
+}
+</pre>
+
+<h4>To be honest, I don’t like working so low-level with threads. Isn’t there a better way?</h4>
+
+<p>
+    Yes, there is! Indeed, the previous way of creating a multithreaded process in C# is very low level and also
+    introduces two limitations. First of all, it is easy to give data to a thread, but more difficult to extract data
+    from a thread when it is finished. You have to use a shared field. When something happens, like an exception that is
+    thrown, this gets more complicated to handle properly. Secondly, when a thread finishes, you can’t tell that thread
+    to start something new.
+</p>
+
+<p>
+    C#, starting from version 4.0, has come up with an answer to that: the <code>Task</code>. It is a high-level
+    abstraction of a concurrent operation that can be run in a thread, but that doesn’t have to be the case. Let’s get
+    your hands dirty with the following code to create a <code>Task</code> in C#.
+</p>
+
+<pre class="brush: csharp;">
+using System;
+using System.Threading.Tasks;
+
+class TaskTest
+{
+	static void Main ()
+	{
+		Task&lt;int&gt; task = Task.Factory.StartNew (() => {
+            Console.WriteLine ("Foo");
+            return 5;
+        });
+        Console.WriteLine(task.Result);
+    }
+}
+</pre>
+
+<p>
+    The example incorporates the benefit of using a <code>Task</code> when having a return value. The last call to
+    <code>Console.WriteLine</code> will block until the task has finished and returned a result.
+</p>
+
+<h4>Is there an equivalent in Java for this?</h4>
+
+<p>
+    As of Java 7, the language will include a Fork/Join mechanism. It is not the same as the Task in C#, but the
+    Fork/Join mechanism should ease the use of multithreaded programs.
+</p>
+
+<h4>Are there any more specific advantages in C# compared with Java?</h4>
+
+<p>
+    Yes, as a more advanced topic, C# has a better generics system than Java. Where Java uses type erasure behind the
+    scenes, C# stores the type. Under the hood, this means that a Java program needs to cast whenever an element is
+    retrieved from a List. In C#, such a cast is not needed. Functional programming is a feature that can be used in C#.
+    In Java, the only way to do some functional programming is by using reflection. Of course, there is also a way to
+    use reflection in C#. Also, there is a way to use interoperability in C#. Again, in Java, this is not possible.
+</p>
+
+<p>
+    What distinguishes C# from Java even more, is a feature called Language Integrated Query (LINQ). LINQ extends C# by
+    making it possible to conveniently process data from arrays, enumerable classes, XML documents, relational databases
+    and third party data sources. There is nothing like LINQ in Java.
+</p>
+
+<h4>Is there also a difference between C# and Java when it comes to generics?</h4>
+
+<p>
+    As previously stated, the main difference between generics in Java and in C# is the fact that C# retains type
+    specific information all throughout the compilation process and that the compiled code still has type information
+    available. In java generics, the concept of type erasure is used. This means that type information is erased during
+    compilation. All generically typed objects are cast to the Object type at compile time thusly removing the generic
+    type information. This means that once the code is compiled, the generic type information is gone and cannot be used
+    at runtime to perform type specific operations. Java reflection at runtime can only access the Object type’s members
+    or you need to cast the object back to the original type at runtime which isn’t type safe. The only way this can
+    happen securely is because the java type checker validates whether the generic code is correctly typed before
+    compilation.
+</p>
+
+<p>
+    In C#, preserving the type information throughout the compilation process allows for a more secure generic type
+    system while not having the performance penalty of having to cast all the time.
+</p>
+
+<h4>So why did the Java guys choose to do it this way?</h4>
+
+<p>
+    One of the main reasons behind this design choice is the argument of backward compatibility. Because the generic
+    type
+    information is removed at compile time an ArrayList&lt;Person&gt; just becomes a ArrayList of Objects. This way the
+    generated code remains compatible with earlier versions of java which didn’t have any form of generics yet (for
+    example
+    the non-generic ArrayList instances). It may be useful to note that from a language perspective, there aren’t any
+    problems with java-generics. It is not particularly different than generics in C#, but the way they are handled by
+    there
+    respective “virtual machines” is different.
+</p>
+
+<h4>So you are saying that C# is not backward compatible in terms of generics?</h4>
+
+<p>
+    Not completely, no. They did introduce generics a little bit earlier in their timeline than java did, but if you go
+    back to C# before version 2.0 you will notice that you have to convert your List&lt;Something&gt; back to simple
+    List objects to work with them.
+</p>
+
+<p>
+    The reason they chose to abandon this backwards compatibility, is a matter of performance.
+    By keeping the generic type information throughout the compilation process, the C# JIT compiler is able to create
+    specific code tailored to the generic parameter. It is af if you wrote a complete specific class representing a list
+    of Somethings called <code>ListOfSomethings</code>. This avoids the need to cast and therefore, the performance
+    penalty for casting. And as stated before, it also has the added benefit of being able to use reflection at runtime
+    to gather specific information about Something-objects.
+</p>
+
+<h4>I have heard about this thing called interoperability. What does this mean actually?</h4>
+
+<p>
+    Interoperability is a pretty broad term. Technically, it is the ability of a component for being able to work
+    together with other components now and in the future (and sometimes even with components from the past which is
+    called backwards-compatibility). This, again, is a pretty vague statement. In programming it is also often mentioned
+    as a metric for how well a certain programming language allows working with other programming languages.
+</p>
+
+<h4>Does C# have a better interoperability score than java?</h4>
+
+<p>
+    Well, it is hard to compare the two languages based on this measure because nowadays there are a lot of different
+    projects meant for making both languages more interoperable.
+    But if we look at the languages themselves, it is safe to say that both languages have made efforts to be used by
+    other languages and to use other languages themselves.
+</p>
+
+<p>
+    Java and scala can be used interchangeably when programming in either language, while C# has the advantage of being
+    able to use C++ components.
+</p>
+
+<p>
+    I would say though, that C# does score higher on the interoperability mark when you consider the possibilities for
+    calling and invoking windows specific constructs, like COM objects or general Win32 API calls. C# was primarily
+    meant for Windows Platforms, so it is understandable that it supports native windows construct a bit better than
+    java (which was designed with a platform independent philosophy) does. The Mono platform, created to bring C# to
+    other platforms was never able to provide the same interoperability as C# originally had.
+</p>
+
+<p>
+    Interoperability is also a measure between two entities. For example, you can gauge the interoperability between
+    java and another language. It is not really a metric you can measure on its own.
+</p>
+
+<h4>Ok, so how is the interoperability between Java and C# then? Can they be used interchangeably?</h4>
+
+<p>
+    That is a really interesting question. In itself it is not possible to use the two languages interchangeably because
+    they both run in their own virtualised environment (JVM vs. CLR).
+    So one language or the other is always going to need a certain bridge or adapter or something to understand notions
+    from the other language.
+</p>
+
+<p>
+    There are, however, a few interesting projects that try to bridge the two languages and offer a mechanism from using
+    concepts from both languages at the same time. For example, there exists a project called jni4net, which offers a
+    bridge between Java and .NET with which you can program in both languages and call methods and libraries from the
+    other language.
+    There is also a project called IKVM.NET which is basically a JVM implemented in .NET with .NET implementations of
+    the Java class libraries and tools for making interoperability easier.
+</p>
+
+<p>
+    And these are just a few of the projects out there in the wild. People will always be interested in merging and
+    combining different languages or reusing code from different languages, so you can expect that projects for bridging
+    the interoperability gap will always be in existence.
+</p>
+
+<h4>What are all the steps between writing and executing a Java or C# file?</h4>
+
+<p>
+    Developers in Java must have the Java SDK, or shortened Java Development Kit (JDK). This consists of the Java
+    Runtime Environment (JRE) and some development tools like a compiler (<code>javac</code>) and a documentation
+    generator (<code>javadoc</code>). There are two important JDKs available: openJDK and Oracle JDK. Technically, 99%
+    of both JDKs overlap so there is not so much of a difference apart from licensing. The first comes with a GNU GPL
+    version 2 license - free and open-source - while the latter has a custom license.
+</p>
+
+<p>
+    As already discussed, Java excels in its portability. It is designed to execute on the Java platform via the JRE.
+    The platform includes the Java Virtual Machine (JVM) and a common set of libraries, a sufficient requirement to
+    execute Java programs. The compiler produces Java bytecode and is is loaded by the Java runtime. This bytecode is
+    either interpreted directly or compiled to machine instructions and then executed.
+</p>
+
+<p>
+    C# depends on the .NET framework from Microsoft if we discard the Mono project. The framework is only supported for
+    Windows machines but can handle more that just C#. Languages like VB.NET, C++ or J# have a compiler that transforms
+    the source code to the common intermediate language (CIL). Just like Java, C# programs are not compiled to machine
+    code but to this intermediate language. A second compilation step occurs, generally at execution time, converting
+    the CIL to machine code. The specification for the CIL and the runtime is contained within an international standard
+    known as the Common Language Infrastructure (CLI). The execution of the CIL code happens on a runtime engine,
+    Virtual Execution System (VES), which can be compared to the JVM. This engine provides some abstraction of the
+    underlying machine and is more casually referred to as the runtime.
+</p>
+
+<p>
+    The second compilation from CLI to CPU instructions happens at execution-time. The CIL can also be interpreted
+    rather than compiled, similar to the way many scripting languages work.
+</p>
+
+<h4>Is garbage collection supported in both languages?</h4>
+
+<p>
+    Yes, the JVM and runtime both handle this. The JVM searches the Java heap for unused objects and reclaims the used
+    space. Before doing so, the garbage collector thread finalizes the object and gives the opportunity to do some
+    cleanup. The finalize method can be called at any moment in time when an object becomes eligible for garbage
+    collection. The C# approach contains a lot of similarities. Garbage collection uses a generational, compacting,
+    mark-and-sweep based algorithm. Generational, because objects that have lived for only a short period will be
+    cleaned up sooner. Compacting, because after deletion it compacts together the objects that remain so that there is
+    no dirty, unused space in the memory.
+</p>
+
+<h4></h4>
 
 </div>
 <div id="push"></div>
