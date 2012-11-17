@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>C#</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An overview by socratic questioning.">
+    <meta name="author" content="">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="css/shCoreDefault.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div id="wrap">
+
+    <div class="container">
+        <div class="page-header">
+            <h1>C# versus Java</h1>
+
+            <p class="lead">A discussion by socratic questioning.</p>
+        </div>
+
+        <p>For the class Gigantic Software Project Development, an assignment for groups of 3 was given to the students.
+            The assignment consisted of creating a program for simulating amusements parks, while keeping in mind all of
+            the safety regulations and pricing details. The implementation could be done in any programming language of
+            choice. However, another part of the assignment was to fully explain why that particular programming
+            language was chosen. Moe, Larry and Curley formed a team and started a discussion on which programming
+            language they would be using. Bearing in mind that they should have to document exactly why they chose the
+            programming language, the discussion got rather long.
+
+        </p>
+
+        <p id="joke"><img src="img/joke.jpg" class="img-polaroid"></p>
+
+        <p>Moe would like to use <strong>C#</strong> as he is quite an
+            expert in it. Larry on the other hand, thinks they should stick to <strong>Java</strong> as it is the
+            programming
+            language they know well by practicing it in other courses during the last 4 years. Curley does not really
+            care what programming language is used, as long as the program can be written down easily in it. What
+            follows is the discussion, where names in front of a paragraph or question depict who said what.
+        </p>
+
+
+        <hr class="bs-docs-separator">
+
+        <h4>When and why was C# developed?</h4>
+
+        <p>In 1972, a programming language called C was designed by Dennis Ritchie and in 1983 it was augmented by
+            Bjarne Stroustrup with type checking and classes. This language was named C with Classes and it became
+            known, along with some other new features, as C++ in 1984. The Sun Microsystems people in 1990 did not like
+            C or C++, so they excluded some of the features like multiple inheritance, pointers, structs, enum types,
+            operator overloading and a goto statement. Therefore making it a smaller, a simpler and especially a more
+            reliable programming language called Java. Then, in July 2000, Microsoft announced the programming language
+            C# because they disagreed with Sun Microsystems about the removal of all those features available in C++,
+            except for multiple inheritance. Therefore, C# is very close to C++. It borrows mosts of its statements,
+            keywords and operators directly from C++.
+        </p>
+
+        <p>One can thus see C# as an advance over both C++ and Java, because it offers an alternative to the difficult
+            C++ programming language but also an alternative for Java programmers who are missing features of C and C++.
+            Another reason for the development of C# was to provide a language for component-based software
+            development.
+        </p>
+
+        <h4>So, does C# support modularity better than Java?</h4>
+
+        <p>An important aspect of software development when talking about modularity is the ability to compartmentalize
+            your code and to import different libraries.
+            C# provides the functionality of referencing namespaces which are basically scopes for arbitrary sections of
+            code. In Java one can import certain classes. The main difference between the using statement from c# and
+            the import statement from Java is the fact that you can’t immediately use a single class in c#. You always
+            have to use the namespace. To compare this with Java, a namespace looks and behaves more like a Java package
+            and the using statement would correspond to the import wildcard in Java. Java imports with wildcards is
+            generally frowned upon by the Java community though, as this can lead to unnecessary imports and a less
+            clean dependency scheme. If you try to use the using directive on a specific class (say Card) like
+            this:
+        </p>
+
+        <pre class="brush: csharp;">
+            using Sorting.Card;
+        </pre>
+
+        <p>
+            the compiler generates the following error: “‘Sorting.Card’ is a type, not a namespace. A using namespace
+            directive can only be applied to namespaces.”
+            If you want to use the Card class in a C# project, than you would need to import the whole namespace
+            Sorting. In java this would correspond to:
+        </p>
+
+        <pre class="brush: java;">
+            import Sorting.*;
+        </pre>
+
+        <p>while in Java you can alternatively do</p>
+
+        <pre class="brush: java;">
+            import Sorting.Card;
+        </pre>
+
+        <h4>All those preceding languages must have made influences on the C# programming language, haven’t they?</h4>
+
+        <p>
+            Indeed they did. To give you a concrete example, look at the difference in syntax when implementing an
+            interface. In Java you use the implements keyword in your class declaration, because Java was influenced by
+            Smalltalk. C# however uses the colon : which is close to the C++ syntax.
+        </p>
+
+        <p>
+            Not only are there direct influences from Java and C++, but also from programming languages like Delphi and
+            Visual Basic. The former is because the lead designer of C# is Anders Hejlsberg, a Danish software engineer,
+            and he is also known for the programming language Delphi. The latter is because Visual Basic is also a .NET
+            language.
+        </p>
+
+        <h4>For what is C# used?</h4>
+
+        <p>
+            C# is used for a variety of software, ranging from command line utilities to phone applications. The latter
+            is especially the case with the release of Windows Phone in 2010. Windows Phone is a mobile operation system
+            and C# is the most popular programming language to use when building apps for Windows Phone.
+        </p>
+
+        <p>
+            C# is also the center language for Windows developers in general. You can make desktop applications with it.
+            Here, C# distinguishes between two types of applications: Windows Forms and Windows Presentation Foundation
+            (WPF). The latter is newer than the former. Both allow to create controllers like menus and buttons, but the
+            latter gives more power and flexibility.
+        </p>
+
+        <p>
+            C# can also be used for applications in embedded systems, games and website. The latter can be defined in
+            more detail into two categories. The first being the web applications and the second being the web services.
+            Web applications can use the ASP.NET technology to create dynamic webpages. Powerful web services can also
+            be made with C# to exchange data.
+        </p>
+
+        <p>
+            But be aware. C# applications may be intended to be careful with resources such as memory and processing
+            power requirements, but the language was not created in order to compete directly, on performance and size,
+            with C or an assembly language.
+        </p>
+
+        <h4>Has C# changed since its initial release?</h4>
+
+        <p>
+            Like any other programming language, C# also evolved over time since its initial release, referred as C#
+            1.0, in February 2002. The next version, C# 2.0, was released in November 2005 and includes features like
+            generics and nullable types. Two year later, C# 3.0 was released. It mainly added functionality regarding a
+            query language called Language Integrated Query (LINQ) for the .NET framework. Other examples of features in
+            this update were extension and partial methods. In April 2010, C# 4.0 was released and was focused around
+            interoperability. The latest version as of writing, C# 5.0, was released in August 2012 and its main
+            features are asynchronous programming and caller information.
+        </p>
+
+        <h4>Are there syntax differences between Java and C#?</h4>
+
+        <p>
+            What better way to start note some syntactical differences between two programming languages than by writing
+            the famous “Hello, World!” program in each of them. In C# we write:
+        </p>
+
+        <pre class="brush: csharp;">
+            namespace Hello {
+                public class HelloInCSharp
+                {
+                    public static void Main(string[] args)
+                    {
+                        System.Console.WriteLine ("Hello, World!");
+                    }
+                }
+            }
+        </pre>
+
+        <p>And this the Java equivalent: </p>
+        <pre class="brush: java;">
+            package hello;
+                public class HelloInJava
+                {
+                    public static void main(String[] args)
+                    {
+                        System.out.println("Hello, World!");
+                    }
+            }
+        </pre>
+
+        <p>
+            Wait a minute, are there really noticeable differences? Indeed, C# follows the same syntax as Java, but it
+            is a tiny bit different. The class declarations for this example are the same for both C# and Java.
+        </p>
+
+        <p>
+            When we have a closer look at the main method, we see an uppercase m for the main method in C#, but a
+            lowercase m in Java. Indeed, C# uses UpperCamelCase (also called PascalCase) for method names, while Java
+            uses lowerCamelCase.
+        </p>
+
+        <p>
+            The next difference is the writing of the string type. Java uses a capital letter while C# does not.
+            Actually, one can write the string type in C# with a capital letter, because string is just an alias for
+            System.String. Then we have the actual implementation of the main method, where we again see that C# uses
+            the UpperCamelCase notation while Java uses lowerCamelCase.
+        </p>
+
+        <p>
+            Last but not least, we note the difference between a namespace in C# and package in Java. In Java it is just
+            one line of code, while in C# the code within that namespace is surrounded with a block.
+        </p>
+
+    </div>
+    <div id="push"></div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <p class="muted credit">Tim Ameye, Kristof Coninx, Sander Van Loock and Koen Wellens.</p>
+    </div>
+</div>
+
+<script src="js/shCore.js"></script>
+<script src="js/shBrushCSharp.js"></script>
+<script src="js/shBrushJava.js"></script>
+<script>
+    SyntaxHighlighter.all();
+</script>
+
+</body>
+</html>
